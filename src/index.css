@@ -1,3 +1,17 @@
+:root {
+  --ty: 0;
+  --ty-header: 0;
+  --ty-screens: 0;
+  --scale: scale(1);
+}
+
+.theme-light {
+    --bgColor-primary: #2b2b2b;
+    --fontColor-primary: #808080;
+    --fontColor-secondary: #629755;
+    --fontColor-tertiary: #cc7832;
+}
+
 body {
   margin: 0;
   padding: 0;
