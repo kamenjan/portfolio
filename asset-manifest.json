@@ -1,0 +1,16 @@
+{
+  "main.css": "/portfolio/static/css/main.1a497912.chunk.css",
+  "main.js": "/portfolio/static/js/main.72b1f36e.chunk.js",
+  "main.js.map": "/portfolio/static/js/main.72b1f36e.chunk.js.map",
+  "runtime~main.js": "/portfolio/static/js/runtime~main.0fad4c0f.js",
+  "runtime~main.js.map": "/portfolio/static/js/runtime~main.0fad4c0f.js.map",
+  "static/js/2.3f947d08.chunk.js": "/portfolio/static/js/2.3f947d08.chunk.js",
+  "static/js/2.3f947d08.chunk.js.map": "/portfolio/static/js/2.3f947d08.chunk.js.map",
+  "index.html": "/portfolio/index.html",
+  "precache-manifest.d28141aea316dd9460da4a3b49d7750c.js": "/portfolio/precache-manifest.d28141aea316dd9460da4a3b49d7750c.js",
+  "service-worker.js": "/portfolio/service-worker.js",
+  "static/css/main.1a497912.chunk.css.map": "/portfolio/static/css/main.1a497912.chunk.css.map",
+  "static/media/avatar.png": "/portfolio/static/media/avatar.9022e1f8.png",
+  "static/media/meetup.jpg": "/portfolio/static/media/meetup.2e76b5fc.jpg",
+  "static/media/white_board.jpg": "/portfolio/static/media/white_board.a56307e4.jpg"
+}
