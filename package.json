@@ -4,14 +4,14 @@
   "private": true,
   "homepage": "http://kamenjan.github.io/portfolio",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/kamenjan/portfolio"
+    "type": "git",
+    "url": "https://github.com/kamenjan/portfolio"
   },
   "dependencies": {
     "basicscroll": "3.0.1",
     "react": "16.8.0-alpha.1",
     "react-dom": "16.8.0-alpha.1",
-    "react-scripts": "2.1.3",
+    "react-scripts": "2.1.5",
     "redux": "4.0.1",
     "styled-components": "4.1.3"
   },
@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +34,7 @@
   ],
   "devDependencies": {
     "babel-plugin-macros": "2.4.5",
-    "babel-plugin-styled-components": "1.10.0"
+    "babel-plugin-styled-components": "1.10.0",
+    "gh-pages": "2.0.1"
   }
 }

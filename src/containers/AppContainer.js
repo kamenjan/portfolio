@@ -1,13 +1,11 @@
 import React from 'react'
 
-// import * as basicScroll from 'basicscroll'
 import { createGlobalStyle } from 'styled-components/macro'
 
-import Home from '../components/Home'
-// import HookExample from '../components/example/HookExample'
-
-import whiteboardImage from '../static/white_board.jpg'
-import headerBgImage from '../static/meetup.jpg'
+import Header from '../components/Header'
+import Stack from '../components/Stack'
+import Work from '../components/Work'
+import Community from '../components/Community'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .first-parallax {
-    background-image: url(${whiteboardImage});
     height: 400px;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,7 +32,6 @@ const GlobalStyle = createGlobalStyle`
     left: 0;
     right: 0;
     z-index: 1;
-    background-image: url(${headerBgImage});
     height: 400px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -50,7 +46,10 @@ const GlobalStyle = createGlobalStyle`
 const AppContainer = () => {
   return (
     <>
-      <Home />
+      <Header />
+      <Stack />
+      <Work />
+      <Community />
       <GlobalStyle />
     </>
   )
