@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import JSDoc from './JSDoc'
+import { CommentBlock, BlockTag } from './JSDoc'
 
 const StyledCommunity = styled.div`
   overflow: hidden;
@@ -12,14 +12,14 @@ const Community = props => {
   const elementRef = useRef()
   return (
     <StyledCommunity ref={elementRef}>
-      <JSDoc>
+      <CommentBlock>
+        <>Termitnjak 2015-2017</>
+        <>@name Termitnjak 2015-2017</>
+      </CommentBlock>
+      <CommentBlock>
         <>@name Termitnjak 2015-2017</>
         <>@name Termitnjak 2015-2017</>
-      </JSDoc>
-      <JSDoc>
-        <>@name Termitnjak 2015-2017</>
-        <>@name Termitnjak 2015-2017</>
-      </JSDoc>
+      </CommentBlock>
     </StyledCommunity>
   )
 }
