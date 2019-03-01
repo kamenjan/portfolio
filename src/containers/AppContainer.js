@@ -1,19 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { createGlobalStyle } from 'styled-components/macro'
-
-import Header from '../components/Header'
-import Stack from '../components/Stack'
-import Work from '../components/Work'
-import Community from '../components/Community'
-import Menu from '../components/Menu'
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    color: #DDD;
-    background-color: #444;
-  }
-`
+import Portfolio from '../components/Portfolio'
 
 const AppContainer = () => {
   const [viewportDimensions, setViewportDimensions] = useState({
@@ -49,12 +36,7 @@ const AppContainer = () => {
     <>
       <div>{viewportDimensions.width}</div>
       <div>{viewportDimensions.height}</div>
-      <Header />
-      <Stack />
-      <Work />
-      <Community />
-      <GlobalStyle />
-      <Menu viewport={viewportDimensions} />
+      <Portfolio viewport={viewportDimensions} />
     </>
   )
 }

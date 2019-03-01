@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import * as basicScroll from 'basicscroll'
 import styled from 'styled-components'
 
-import { compose } from '../utils/functional'
+import { compose } from '../../utils/functional'
 
 // Describing a composable styled component
 const WithStyle = component => styled(component)`

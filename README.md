@@ -95,12 +95,14 @@ Tools: babel, eslint, sass, hotreload, flexbox
 
 
 ### 3. Build the production version using React and GitHub Pages 
+
+
  
 #### Components
 
-##### Menu
+##### <Menu>
 props: 
-	- item array
+	- <MenuItem> array
 		- item.svg/icon
 		- item.title
 		- item.desktop-horizontal-align(left/right)
@@ -110,8 +112,29 @@ defines:
 	- css styles (font,color/mobileVSdesktop)
 		- item-height
 		- mobile-container-height = item.length * item-height + 1 // (1 for burger button padding when menu is opened on mobile screen)
+		
+##### <MenuItem>
+props: 
+    - svg/icon
+    - title
+    - desktop-horizontal-align(left/right)
+    
+##### <AboveTheFold>
+##### <HeroArea>
+##### About
+##### ParallaxBackground
+##### StackGroup
+##### SVG
+##### Title
+##### JSDoc
+
 
 ## Issues, notes & todos 
+
+### Styled Components
+
+https://jsramblings.com/2018/02/04/styled-components-media-queries.html
+
 
 ### Hooks
 
