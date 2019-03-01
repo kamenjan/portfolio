@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { device } from '../../defines/device'
+import { device } from '../defines/device'
 
-import MenuItem from '../MenuItem'
+import MenuItem from './MenuItem'
 
-import burgerIcon from '../../static/burger.png'
+import burgerIcon from '../static/burger.png'
 
 const menuItems = [
   {

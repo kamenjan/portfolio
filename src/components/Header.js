@@ -1,83 +1,84 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
+import headerBgImageXS from '../static/images/bg-header-xs-dark.jpg'
+import headerBgImageXL from '../static/images/bg-header-xl-dark.jpg'
+
 // Header container CSS
 const StyledHeader = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  height: 400px;
-  margin-top: 120px;
-  text-align: center;
+  --ty-header: 0;
+
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+
+  #hero-area-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    will-change: transform;
+    transform: translateY(var(--ty-header));
+
+    #hero-area-image {
+      position: absolute;
+      z-index: -10;
+      min-width: 469px;
+      height: 330px;
+      top: -40px;
+      content: url(${headerBgImageXS});
+    }
+
+    #hero-area-content {
+      position: absolute;
+      z-index: -10;
+      width: 360px;
+      will-change: transform;
+    }
+  }
 `
 
 const Header = props => {
   return (
-    <div id={'above-the-fold'}>
-      <div id={'hero-area-mask'}>
-        <div id={'hero-area-container'}>
-          <img id={'hero-area-image'} />
-          <div id={'hero-area-content'}>
-            <p>&#47;**</p>
-            <p>
-              &nbsp;* <span className={'font-secondary'}>@name </span>
-              <span className={'color-tertiary'}>Rok Arih</span>
-            </p>
-            <p>
-              &nbsp;* <span className={'font-secondary'}>@desc</span>
-              <span className={'color-tertiary'}>Web Developer</span>
-            </p>
-            <p>
-              &nbsp;* <span className={'font-secondary'}>@version </span>
-              <span className={'color-tertiary'}>3.2.11</span>
-            </p>
-            <p>&nbsp;*</p>
-            <p>
-              &nbsp;*
-              <span className={'font-secondary'}>
-                @link{' '}
-                <span>
-                  <a href=''>mail</a>
-                  <a href=''>mail</a>
-                </span>
-                ,{' '}
-                <span>
-                  <a href=''>github</a>
-                </span>
-                ,{' '}
-                <span>
-                  <a href=''>linkedin</a>
-                </span>
+    <StyledHeader id={'hero-area-mask'}>
+      <div id={'hero-area-container'}>
+        <img id={'hero-area-image'} alt={'hero-area-image'} />
+        <div id={'hero-area-content'}>
+          <p>&#47;**</p>
+          <p>
+            &nbsp;* <span className={'font-secondary'}>@name </span>
+            <span className={'color-tertiary'}>Rok Arih</span>
+          </p>
+          <p>
+            &nbsp;* <span className={'font-secondary'}>@desc</span>
+            <span className={'color-tertiary'}>Web Developer</span>
+          </p>
+          <p>
+            &nbsp;* <span className={'font-secondary'}>@version </span>
+            <span className={'color-tertiary'}>3.2.11</span>
+          </p>
+          <p>&nbsp;*</p>
+          <p>
+            &nbsp;*
+            <span className={'font-secondary'}>
+              @link{' '}
+              <span>
+                <a href=''>mail</a>
+                <a href=''>mail</a>
               </span>
-            </p>
-            <p>&nbsp;*/</p>
-          </div>
+              ,{' '}
+              <span>
+                <a href=''>github</a>
+              </span>
+              ,{' '}
+              <span>
+                <a href=''>linkedin</a>
+              </span>
+            </span>
+          </p>
+          <p>&nbsp;*/</p>
         </div>
       </div>
-      <div id='about' className={'section'}>
-        <div className={'content'}>
-          <div className={'container'}>
-            <p className={'about-paragraph'}>
-              &#47;** I'm an allround web developer based
-              <a href={''}>@Ljubljana</a>. I enjoy building web applications and
-              solving programming challenges while having lots of fun in a
-              chaotic world of JavaScript.
-            </p>
-
-            <p className={'about-paragraph'}>
-              I have a strong passion for learning new things and working in
-              teams with experienced developers.
-            </p>
-
-            <p className={'about-paragraph'}>
-              When I'm not building web or solving puzzles on coding sites I
-              like to play strategic and fantasy board games. */
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </StyledHeader>
   )
 }
 

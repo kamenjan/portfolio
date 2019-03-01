@@ -2,7 +2,7 @@ import React from 'react'
 
 // Need babel-macros because cra does not give me access to babelrc and other
 import styled from 'styled-components/macro'
-import { compose } from '../utils/functional'
+import { compose } from '../../utils/functional'
 
 // Header container CSS
 const WithCommonStyles = component => styled(component)`

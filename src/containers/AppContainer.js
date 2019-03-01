@@ -14,6 +14,9 @@ const AppContainer = () => {
     ),
   })
 
+  // TODO: This belongs in redux store
+  const [theme, setTheme] = useState('dark')
+
   const getViewportDimensions = () => {
     setViewportDimensions({
       width: Math.max(
@@ -34,9 +37,7 @@ const AppContainer = () => {
 
   return (
     <>
-      <div>{viewportDimensions.width}</div>
-      <div>{viewportDimensions.height}</div>
-      <Portfolio viewport={viewportDimensions} />
+      <Portfolio viewport={viewportDimensions} theme={theme} />
     </>
   )
 }
