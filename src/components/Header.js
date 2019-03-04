@@ -1,8 +1,29 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
+import { media } from '../defines/media'
+
 import headerBgImageXS from '../static/images/bg-header-xs-dark.jpg'
+import headerBgImageSM from '../static/images/bg-header-sm-dark.jpg'
+import headerBgImageMD from '../static/images/bg-header-md-dark.jpg'
+import headerBgImageLG from '../static/images/bg-header-lg-dark.jpg'
 import headerBgImageXL from '../static/images/bg-header-xl-dark.jpg'
+
+const headerJSDocLines = [
+  { tag: '@name', value: 'Rok Arih', links: [] },
+  { tag: '@desc', value: 'Web Developer', links: [] },
+  { tag: '@version', value: '3.2.11', links: [] },
+  { tag: null, value: null, links: [] },
+  {
+    tag: '@link',
+    value: null,
+    links: [
+      { displayName: 'mail', href: 'my.mail' },
+      { displayName: 'github', href: 'github.com' },
+      { displayName: 'linkedin', href: 'linkedin.com' },
+    ],
+  },
+]
 
 // Header container CSS
 const StyledHeader = styled.div`
@@ -22,7 +43,7 @@ const StyledHeader = styled.div`
     #hero-area-image {
       position: absolute;
       z-index: -10;
-      min-width: 469px;
+      width: 469px;
       height: 330px;
       top: -40px;
       content: url(${headerBgImageXS});
@@ -31,10 +52,102 @@ const StyledHeader = styled.div`
     #hero-area-content {
       position: absolute;
       z-index: -10;
-      width: 360px;
-      will-change: transform;
+      min-width: 360px;
+      margin-top: 16px;
+      margin-left: 34px;
+      font-size: 15px;
+      line-height: 1.4em;
+      color: grey;
     }
   }
+
+  @media ${media.SM} {
+    height: 270px;
+    #hero-area-container {
+      #hero-area-image {
+        width: 769px;
+        height: 270px;
+        top: 0;
+        content: url(${headerBgImageSM});
+      }
+      #hero-area-content {
+        margin-top: 22px;
+        margin-left: 98px;
+        font-size: 16px;
+      }
+    }
+  }
+  @media ${media.MD} {
+    height: 360px;
+    #hero-area-container {
+      #hero-area-image {
+        width: 1024px;
+        height: 360px;
+        top: 0;
+        content: url(${headerBgImageMD});
+      }
+      #hero-area-content {
+        margin-top: 22px;
+        margin-left: 120px;
+        font-size: 20px;
+      }
+    }
+  }
+  @media ${media.LG} {
+    height: 480px;
+    #hero-area-container {
+      #hero-area-image {
+        width: 1680px;
+        height: 620px;
+        top: -100px;
+        content: url(${headerBgImageLG});
+      }
+      #hero-area-content {
+        margin-top: 38px;
+        margin-left: 160px;
+        font-size: 26px;
+      }
+    }
+  }
+  @media ${media.XL} {
+    height: 580px;
+    #hero-area-container {
+      #hero-area-image {
+        width: 2000px;
+        height: 740px;
+        top: -130px;
+        content: url(${headerBgImageXL});
+      }
+      #hero-area-content {
+        margin-top: 38px;
+        margin-left: 160px;
+        font-size: 32px;
+      }
+    }
+  }
+  @media (min-width: 2000px) {
+    height: 680px;
+    #hero-area-container {
+      #hero-area-image {
+        width: 2600px;
+        height: 960px;
+        top: -200px;
+      }
+      #hero-area-content {
+        margin-top: 38px;
+        margin-left: 130px;
+        font-size: 38px;
+      }
+    }
+  }
+`
+
+const StyledTag = styled.span`
+  color: green;
+`
+
+const StyledValue = styled.span`
+  color: orange;
 `
 
 const Header = props => {
@@ -44,42 +157,28 @@ const Header = props => {
         <img id={'hero-area-image'} alt={'hero-area-image'} />
         <div id={'hero-area-content'}>
           <p>&#47;**</p>
-          <p>
-            &nbsp;* <span className={'font-secondary'}>@name </span>
-            <span className={'color-tertiary'}>Rok Arih</span>
-          </p>
-          <p>
-            &nbsp;* <span className={'font-secondary'}>@desc</span>
-            <span className={'color-tertiary'}>Web Developer</span>
-          </p>
-          <p>
-            &nbsp;* <span className={'font-secondary'}>@version </span>
-            <span className={'color-tertiary'}>3.2.11</span>
-          </p>
-          <p>&nbsp;*</p>
-          <p>
-            &nbsp;*
-            <span className={'font-secondary'}>
-              @link{' '}
-              <span>
-                <a href=''>mail</a>
-                <a href=''>mail</a>
-              </span>
-              ,{' '}
-              <span>
-                <a href=''>github</a>
-              </span>
-              ,{' '}
-              <span>
-                <a href=''>linkedin</a>
-              </span>
-            </span>
-          </p>
-          <p>&nbsp;*/</p>
+          {headerJSDocLines.map((line, i) => (
+            <p key={i}>
+              &nbsp;*&nbsp;
+              <StyledTag>{line.tag}</StyledTag>
+              &nbsp;
+              <StyledValue>{line.value}</StyledValue>
+              {line.links.map(({ href, displayName }) => (
+                <>
+                  <a href={href}>{displayName}</a>,&nbsp;
+                </>
+              ))}
+            </p>
+          ))}
+          <p>&nbsp;*&#47;</p>
         </div>
       </div>
     </StyledHeader>
   )
+}
+
+Header.defaultProps = {
+  height: '800px',
 }
 
 export default Header

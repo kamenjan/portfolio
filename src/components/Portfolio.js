@@ -16,6 +16,7 @@ import Menu from './Menu'
 
 const GlobalStyle = createGlobalStyle`
   html { 
+    // CSS variables 
     :root { 
       --color-bg-primary: ${props =>
         props.theme === 'light' ? '#d3d3d3' : '#2b2b2b'};
