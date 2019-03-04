@@ -60,10 +60,10 @@ const Portfolio = props => {
     <>
       <GlobalStyle theme={props.theme} />
       <Header />
-      {/*<About />*/}
-      {/*<Stack />*/}
-      {/*<Work />*/}
-      {/*<Community />*/}
+      <About />
+      <Stack />
+      <Work />
+      <Community />
       <Menu viewport={props.viewport} />
     </>
   )
