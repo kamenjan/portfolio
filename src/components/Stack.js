@@ -1,127 +1,214 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { media } from '../defines/media'
+
+const stack = {
+  frontendSections: [
+    {
+      title: 'JavaScript',
+      subsections: [
+        {
+          title: 'specifications_&_compiler',
+          itemList: ['ES2018+', 'Babel'],
+        },
+        {
+          title: 'build_&_dev_tools',
+          itemList: ['npm', 'Webpack', 'ESLint', 'Prettier'],
+        },
+        {
+          title: 'libraries_&_frameworks',
+          itemList: [
+            'React',
+            'Redux',
+            'Materail-UI',
+            'Electron',
+            'jQuery',
+            'GSAP',
+            'Lottie',
+            'HTML5 Canvas',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Layout & Styling',
+      subsections: [
+        {
+          title: 'preprocessors',
+          itemList: ['SASS', 'LESS', 'CSS-in-JS'],
+        },
+        {
+          title: 'tools',
+          itemList: [
+            'Flexbox',
+            'Grid',
+            'Bootstrap',
+            'CSS Variables',
+            'CCS Animations',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Design Tools',
+      subsections: [
+        {
+          title: 'apps',
+          itemList: ['Sketch', 'Adobe Photoshop'],
+        },
+      ],
+    },
+  ],
+  backendSection: [
+    {
+      title: 'Development Environment',
+      subsections: [
+        {
+          title: 'code_versioning',
+          itemList: ['Git', 'Subversion'],
+        },
+        {
+          title: 'ide_&_editors',
+          itemList: ['Sublime Text', 'WebStorm', 'NetBeans'],
+        },
+        {
+          title: 'languages',
+          itemList: ['JavaScript', 'PHP', 'Java', 'C#', 'Bash'],
+        },
+        {
+          title: 'os',
+          itemList: ['osx', 'ubuntu', 'debian'],
+        },
+      ],
+    },
+    {
+      title: 'Servers & Server Scripting',
+      subsections: [
+        {
+          title: 'servers',
+          itemList: ['Apache', 'Nginx', 'Node.js'],
+        },
+        {
+          title: 'frameworks',
+          itemList: ['Express', 'CodeIgniter'],
+        },
+      ],
+    },
+    {
+      title: 'Data',
+      subsections: [
+        {
+          title: 'rdbms',
+          itemList: ['MySQL', 'PostgreSQL', 'SQLite'],
+        },
+        {
+          title: 'native',
+          itemList: ['JSON', 'XML'],
+        },
+      ],
+    },
+  ],
+}
 
 const StyledStack = styled.div`
-  overflow: hidden;
-  will-change: rChannel;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: var(--color-contrast);
+
+  @media ${media.SM} {
+    max-width: 470px;
+    font-size: 16px;
+  }
+  @media ${media.MD} {
+    max-width: 768px;
+    font-size: 18px;
+  }
+  @media ${media.LG} {
+    max-width: 1024px;
+    font-size: 20px;
+  }
+  @media ${media.XL} {
+    max-width: 1280px;
+    font-size: 22px;
+  }
+`
+const StyledStackSection = styled.div`
+  //width: 120%;
+  display: inline-block;
+  text-align: center;
+  @media ${media.LG} {
+    width: 50%;
+  }
+`
+const StyledSectionTitle = styled.h1`
+  text-align: center;
+  color: grey;
+  margin-top: 32px;
+  font-size: 18px;
+`
+const StyledSubsectionTitle = styled.h2`
+  text-align: center;
+  color: var(--color-contrast);
+  margin-top: 20px;
+  margin-bottom: 4px;
+  font-size: 14px;
+`
+const StyledItems = styled.p`
+  font-size: 13px;
+  line-height: 1.7em;
+`
+const StyledItem = styled.span`
+  color: green;
+`
+const StyledComma = styled.span`
+  color: orange;
 `
 
 const Stack = props => {
   return (
     <StyledStack>
-      <div className='container'>
-        <h1>// JavaScript</h1>
-        <h2>specifications_&_compiler:</h2>
-        <p>
-          <span className='bracket'>[</span> 'ES2018+'
-          <span className='comma'>,</span>
-          'Babel' <span className='bracket'>]</span>
-        </p>
-        <h2>build_&_dev_tools:</h2>
-        <p>
-          <span className='bracket'>[</span> 'npm'
-          <span className='comma'>,</span>
-          'Webpack'<span className='comma'>,</span> 'ESLint'
-          <span className='comma'>,</span>
-          'Prettier' <span className='bracket'>]</span>
-        </p>
-        <h2>libraries_&_frameworks:</h2>
-        <p>
-          <span className='bracket'>[</span> 'React'
-          <span className='comma'>,</span>
-          'Redux'<span className='comma'>,</span> 'Materail-UI'
-          <span className='comma'>,</span>
-          'Electron'<span className='comma'>,</span> 'jQuery'
-          <span className='comma'>,</span>
-          'GSAP'<span className='comma'>,</span> 'Lottie'
-          <span className='comma'>,</span>
-          'HTML5 Canvas' <span className='bracket'>]</span>
-        </p>
-        <h1>// Layout & Styling</h1>
-        <h2>preprocessors:</h2>
-        <p>
-          <span className='bracket'>[</span> 'SASS'
-          <span className='comma'>,</span>
-          'LESS'<span className='comma'>,</span> 'CSS-in-JS'
-          <span className='bracket'>]</span>
-        </p>
-        <h2>tools:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Flexbox'
-          <span className='comma'>,</span>
-          'Grid'<span className='comma'>,</span> 'Bootstrap'
-          <span className='comma'>,</span>
-          'CSS Variables'<span className='comma'>,</span> 'CCS Animations'
-          <span className='bracket'>]</span>
-        </p>
-        <h1>// Design Tools</h1>
-        <h2>apps:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Sketch'
-          <span className='comma'>,</span>
-          'Adobe Photoshop' <span className='bracket'>]</span>
-        </p>
-      </div>
-      <div className='container'>
-        <h1>// Development Environment</h1>
-        <h2>code_versioning:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Git'
-          <span className='comma'>,</span>
-          'Subversion' <span className='bracket'>]</span>
-        </p>
-        <h2>ide_&_editors:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Sublime Text'
-          <span className='comma'>,</span>
-          'WebStorm'<span className='comma'>,</span> 'NetBeans'
-          <span className='bracket'>]</span>
-        </p>
-        <h2>languages:</h2>
-        <p>
-          <span className='bracket'>[</span> 'JavaScript'
-          <span className='comma'>,</span>
-          'PHP'<span className='comma'>,</span> 'Java'
-          <span className='comma'>,</span>
-          'C#'<span className='comma'>,</span> 'Bash'
-          <span className='bracket'>]</span>
-        </p>
-        <h2>os:</h2>
-        <p>
-          <span className='bracket'>[</span> 'osx'
-          <span className='comma'>,</span>
-          'ubuntu'<span className='comma'>,</span> 'debian'
-          <span className='bracket'>]</span>
-        </p>
-        <h1>// Servers & Server Scripting</h1>
-        <h2>servers:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Apache'
-          <span className='comma'>,</span>
-          'Nginx'<span className='comma'>,</span> 'Node.js'
-          <span className='bracket'>]</span>
-        </p>
-        <h2>frameworks:</h2>
-        <p>
-          <span className='bracket'>[</span> 'Express'
-          <span className='comma'>,</span>
-          'CodeIgniter' <span className='bracket'>]</span>
-        </p>
-        <h1>// Data</h1>
-        <h2>rdbms:</h2>
-        <p>
-          <span className='bracket'>[</span> 'MySQL'
-          <span className='comma'>,</span>
-          'PostgreSQL'<span className='comma'>,</span> 'SQLite'
-          <span className='bracket'>]</span>
-        </p>
-        <h2>native:</h2>
-        <p>
-          <span className='bracket'>[</span> 'JSON'
-          <span className='comma'>,</span>
-          'XML' <span className='bracket'>]</span>
-        </p>
-      </div>
+      {Object.keys(stack).map(stackSection => (
+        <StyledStackSection>
+          {stack[stackSection].map(section => (
+            <>
+              <StyledSectionTitle>
+                &#47;&#47; {section.title}
+              </StyledSectionTitle>
+              {section.subsections.map(subsection => (
+                <>
+                  <StyledSubsectionTitle>
+                    {subsection.title}:
+                  </StyledSubsectionTitle>
+                  <StyledItems>
+                    <span>[&nbsp;</span>
+                    {subsection.itemList.map((item, i, arr) => (
+                      <>
+                        {i === arr.length - 1 ? (
+                          <StyledItem>'{item}'</StyledItem>
+                        ) : (
+                          <>
+                            <StyledItem>'{item}'</StyledItem>
+                            <StyledComma>, </StyledComma>
+                          </>
+                        )}
+                      </>
+                    ))}
+                    <span>&nbsp;]</span>
+                  </StyledItems>
+                </>
+              ))}
+            </>
+          ))}
+        </StyledStackSection>
+      ))}
     </StyledStack>
   )
 }
