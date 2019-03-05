@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { media } from '../defines/media'
+import { media } from '../../defines/media'
 
 const stack = {
   frontendSections: [
@@ -141,7 +141,6 @@ const StyledStack = styled.div`
   }
 `
 const StyledStackSection = styled.div`
-  //width: 120%;
   display: inline-block;
   text-align: center;
   @media ${media.LG} {
@@ -175,37 +174,31 @@ const StyledComma = styled.span`
 const Stack = props => {
   return (
     <StyledStack>
-      {Object.keys(stack).map(stackSection => (
-        <StyledStackSection>
-          {stack[stackSection].map(section => (
-            <>
+      {Object.keys(stack).map((stackSection, i) => (
+        <StyledStackSection key={i}>
+          {stack[stackSection].map((section, i) => (
+            <React.Fragment key={i}>
               <StyledSectionTitle>
                 &#47;&#47; {section.title}
               </StyledSectionTitle>
-              {section.subsections.map(subsection => (
-                <>
+              {section.subsections.map((subsection, i) => (
+                <React.Fragment key={i}>
                   <StyledSubsectionTitle>
                     {subsection.title}:
                   </StyledSubsectionTitle>
                   <StyledItems>
                     <span>[&nbsp;</span>
                     {subsection.itemList.map((item, i, arr) => (
-                      <>
-                        {i === arr.length - 1 ? (
-                          <StyledItem>'{item}'</StyledItem>
-                        ) : (
-                          <>
-                            <StyledItem>'{item}'</StyledItem>
-                            <StyledComma>, </StyledComma>
-                          </>
-                        )}
-                      </>
+                      <React.Fragment key={i}>
+                        <StyledItem>'{item}'</StyledItem>
+                        {i !== arr.length - 1 && <StyledComma>, </StyledComma>}
+                      </React.Fragment>
                     ))}
                     <span>&nbsp;]</span>
                   </StyledItems>
-                </>
+                </React.Fragment>
               ))}
-            </>
+            </React.Fragment>
           ))}
         </StyledStackSection>
       ))}
