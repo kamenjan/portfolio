@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { device } from '../defines/device'
+import { media } from '../../defines/media'
 
 import MenuItem from './MenuItem'
 
-import burgerIcon from '../static/burger.png'
+import burgerIcon from '../../static/burger.png'
 
 const menuItems = [
   {
     icon: <span>ICON</span>,
     value: 'Top',
     shortcut: '1',
-    // location: '#',
-    // action: history.goBack
   },
   {
     icon: <span>ICON</span>,
     value: 'Stack',
     shortcut: '2',
-    // location: '/settings'
   },
   {
     icon: <span>ICON</span>,
     value: 'Work',
     shortcut: '3',
-    // location: '#',
-    // action: coinsUpdate
+  },
+  {
+    icon: <span>ICON</span>,
+    value: 'NekiWork',
+    shortcut: '4',
   },
 ]
 
@@ -33,8 +33,10 @@ const menuItems = [
 const StyledMenu = styled.div`
   position: fixed;
   right: 0;
-  bottom: ${props => (props.menuOpened ? 'calc(100% - 280px)' : '100%')};
+  bottom: ${props =>
+    props.menuOpened ? `calc(100% - ${props.menuHeight}px)` : '100%'};
   width: 360px;
+  padding-top: ${props => `${props.itemHeight}px`}
 
   background-color: #3d3d3d;
   color: #a9b7c6;
@@ -44,11 +46,13 @@ const StyledMenu = styled.div`
 
   transition: bottom 0.5s ease-in-out;
 
-  @media ${device.MD} {
+  @media ${media.MD} {
     right: inherit;
     left: 0;
-    bottom: 0;
+    top: ${props => `calc(100% - ${props.itemHeight}px)`};
     width: 100%;
+    height: ${props => `${props.itemHeight}px`};
+    padding-top: 0;
 
     border-top: 1px solid #676767;
     border-left: none;
@@ -60,14 +64,14 @@ const StyledMenu = styled.div`
     top: 8px;
     right: 8px;
     height: 34px;
-    @media (min-width: ${device.MD}) {
+    @media ${media.MD} {
       display: none;
     }
   }
   #status-bar-container {
     display: flex;
     flex-flow: column;
-    @media (min-width: ${device.MD}) {
+    @media ${media.MD} {
       max-width: 769px;
       margin-left: auto;
       margin-right: auto;
@@ -80,8 +84,13 @@ const StyledMenu = styled.div`
 
 const Menu = props => {
   const [menuOpened, setMenuOpened] = useState(false)
+  const menuHeight = menuItems.length * props.itemHeight + props.itemHeight
   return (
-    <StyledMenu menuOpened={menuOpened} mobile={props.viewport.width < 768}>
+    <StyledMenu
+      menuOpened={menuOpened}
+      menuHeight={menuHeight}
+      itemHeight={props.itemHeight}
+    >
       <img
         id={'status-bar-burger'}
         onClick={() => setMenuOpened(!menuOpened)}
@@ -89,12 +98,17 @@ const Menu = props => {
         alt={''}
       />
       <div id='status-bar-container'>
-        {menuItems.map((item, i) => (
-          <MenuItem key={i} {...item} />
+        {props.items.map((item, i) => (
+          <MenuItem key={i} {...item} height={props.itemHeight} />
         ))}
       </div>
     </StyledMenu>
   )
+}
+
+Menu.defaultProps = {
+  itemHeight: 42,
+  items: menuItems,
 }
 
 export default Menu

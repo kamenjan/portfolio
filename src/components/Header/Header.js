@@ -1,13 +1,13 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import { media } from '../defines/media'
+import { media } from '../../defines/media'
 
-import headerBgImageXS from '../static/images/bg-header-xs-dark.jpg'
-import headerBgImageSM from '../static/images/bg-header-sm-dark.jpg'
-import headerBgImageMD from '../static/images/bg-header-md-dark.jpg'
-import headerBgImageLG from '../static/images/bg-header-lg-dark.jpg'
-import headerBgImageXL from '../static/images/bg-header-xl-dark.jpg'
+import headerBgImageXS from './static/bg-header-xs-dark.jpg'
+import headerBgImageSM from './static/bg-header-sm-dark.jpg'
+import headerBgImageMD from './static/bg-header-md-dark.jpg'
+import headerBgImageLG from './static/bg-header-lg-dark.jpg'
+import headerBgImageXL from './static/bg-header-xl-dark.jpg'
 
 const headerJSDocLines = [
   { tag: '@name', value: 'Rok Arih', links: [] },
@@ -43,7 +43,7 @@ const StyledHeader = styled.div`
     #hero-area-image {
       position: absolute;
       z-index: -10;
-      width: 469px;
+      min-width: 469px;
       height: 330px;
       top: -40px;
       content: url(${headerBgImageXS});
@@ -141,11 +141,9 @@ const StyledHeader = styled.div`
     }
   }
 `
-
 const StyledTag = styled.span`
   color: green;
 `
-
 const StyledValue = styled.span`
   color: orange;
 `
@@ -154,7 +152,7 @@ const Header = props => {
   return (
     <StyledHeader id={'hero-area-mask'}>
       <div id={'hero-area-container'}>
-        <img id={'hero-area-image'} alt={'hero-area-image'} />
+        <img id={'hero-area-image'} />
         <div id={'hero-area-content'}>
           <p>&#47;**</p>
           {headerJSDocLines.map((line, i) => (
@@ -163,10 +161,10 @@ const Header = props => {
               <StyledTag>{line.tag}</StyledTag>
               &nbsp;
               <StyledValue>{line.value}</StyledValue>
-              {line.links.map(({ href, displayName }) => (
-                <>
+              {line.links.map(({ href, displayName }, i) => (
+                <React.Fragment key={i}>
                   <a href={href}>{displayName}</a>,&nbsp;
-                </>
+                </React.Fragment>
               ))}
             </p>
           ))}

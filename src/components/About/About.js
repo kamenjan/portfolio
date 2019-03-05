@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import { media } from '../defines/media'
+import { media } from '../../defines/media'
 
 // Header container CSS
 const StyledAbout = styled.div`

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import { CommentBlock, BlockTag } from './JSDoc'
+import { CommentBlock, BlockTag } from '../JSDoc'
 
 const StyledCommunity = styled.div`
   overflow: hidden;

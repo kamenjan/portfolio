@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { device } from '../defines/device'
+import { media } from '../../defines/media'
 
 const StyledMenuItem = styled.div`
   font-size: 22px;
   padding: 0 12px;
-  height: 48px;
+  height: ${props => `${props.height}px`};
   display: flex;
   align-items: center;
   border-top: 1px solid #676767;
 
-  @media (min-width: ${device.MD}) {
+  @media ${media.MD} {
     border-top: none;
   }
 
@@ -25,12 +25,20 @@ const StyledMenuItem = styled.div`
   }
 `
 
-const MenuItem = ({ icon, value, shortcut }) => {
+const MenuItem = props => {
   return (
-    <StyledMenuItem>
-      {icon} <span className='underline'>{shortcut}:</span> {value}
+    <StyledMenuItem {...props}>
+      {props.icon} <span className='underline'>{props.shortcut}:</span>{' '}
+      {props.value}
     </StyledMenuItem>
   )
+}
+
+MenuItem.defaultProps = {
+  height: 42,
+  icon: <span>icon</span>,
+  shortcut: '1',
+  value: 'Menu Item',
 }
 
 export default MenuItem
