@@ -131,15 +131,22 @@ props:
 
 ## Issues, notes & todos 
 
+### Default props and prop check
+
+This seems like an elegant way to provide default values to my presentational components (mostly styling stuff).
+
+https://stackoverflow.com/questions/38786973/how-to-set-component-default-props-on-react-component
+
 ### Styled Components
 
 https://jsramblings.com/2018/02/04/styled-components-media-queries.html
-
 
 ### Hooks
 
 https://daveceddia.com/useeffect-hook-examples/
 
+
+### Deploy process 
 
 github pages deploy:
 
