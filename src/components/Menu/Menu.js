@@ -1,36 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+
+import ThemeContext from '../../context/theme'
+
 import { media } from '../../defines/media'
 
 import MenuItem from './MenuItem'
 
 import burgerIcon from '../../static/burger.png'
 
-const menuItems = [
-  {
-    icon: <span>ICON</span>,
-    value: 'Top',
-    shortcut: '1',
-  },
-  {
-    icon: <span>ICON</span>,
-    value: 'Stack',
-    shortcut: '2',
-  },
-  {
-    icon: <span>ICON</span>,
-    value: 'Work',
-    shortcut: '3',
-  },
-  {
-    icon: <span>ICON</span>,
-    value: 'NekiWork',
-    shortcut: '4',
-  },
-]
-
 // Menu container CSS
-const StyledMenu = styled.div`
+const Container = styled.div`
   position: fixed;
   right: 0;
   bottom: ${props =>
@@ -75,18 +55,22 @@ const StyledMenu = styled.div`
       max-width: 769px;
       margin-left: auto;
       margin-right: auto;
-      //height: 100%;
-      //width: 100%;
       flex-flow: row;
     }
   }
 `
 
 const Menu = props => {
+  // Set  menu state
   const [menuOpened, setMenuOpened] = useState(false)
-  const menuHeight = menuItems.length * props.itemHeight + props.itemHeight
+
+  // Calculate mobile menu height based on menu item number and height
+  const menuHeight = props.items.length * props.itemHeight + props.itemHeight
+
+  const { theme, setTheme } = useContext(ThemeContext)
+
   return (
-    <StyledMenu
+    <Container
       menuOpened={menuOpened}
       menuHeight={menuHeight}
       itemHeight={props.itemHeight}
@@ -101,14 +85,42 @@ const Menu = props => {
         {props.items.map((item, i) => (
           <MenuItem key={i} {...item} height={props.itemHeight} />
         ))}
+        <MenuItem
+          height={props.itemHeight}
+          icon={'ikonca'}
+          value={'toggle'}
+          shortcut={'5'}
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        />
       </div>
-    </StyledMenu>
+    </Container>
   )
 }
 
 Menu.defaultProps = {
   itemHeight: 42,
-  items: menuItems,
+  items: [
+    {
+      icon: <span>ICON</span>,
+      value: 'Top',
+      shortcut: '1',
+    },
+    {
+      icon: <span>ICON</span>,
+      value: 'Stack',
+      shortcut: '2',
+    },
+    {
+      icon: <span>ICON</span>,
+      value: 'Work',
+      shortcut: '3',
+    },
+    {
+      icon: <span>ICON</span>,
+      value: 'JAdidadi',
+      shortcut: '4',
+    },
+  ],
 }
 
 export default Menu

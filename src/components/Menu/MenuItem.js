@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { media } from '../../defines/media'
 
-const StyledMenuItem = styled.div`
+const Container = styled.div`
   font-size: 22px;
   padding: 0 12px;
   height: ${props => `${props.height}px`};
@@ -26,11 +26,13 @@ const StyledMenuItem = styled.div`
 `
 
 const MenuItem = props => {
+  console.log(props)
+
   return (
-    <StyledMenuItem {...props}>
+    <Container {...props}>
       {props.icon} <span className='underline'>{props.shortcut}:</span>{' '}
       {props.value}
-    </StyledMenuItem>
+    </Container>
   )
 }
 

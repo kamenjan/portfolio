@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import ThemeContext from '../../context/theme'
+
 import styled, { keyframes } from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
 
@@ -185,7 +188,11 @@ const Value = styled.span`
   color: orange;
 `
 
-const Header = ({ headerContent, theme }) => {
+const Header = ({ headerContent }) => {
+  // Theme context
+  const { theme } = useContext(ThemeContext)
+
+  // BasicScroll config
   const config = {
     from: 'top-top',
     to: 'bottom-top',

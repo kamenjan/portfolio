@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+
+import ThemeContext from '../context/theme'
 
 import { createGlobalStyle } from 'styled-components/macro'
-
 import 'normalize.css'
 
 import Header from './Header/Header'
@@ -11,9 +12,6 @@ import Work from './Work/Work'
 import Community from './Community/Community'
 import Menu from './Menu/Menu'
 import ParallaxDivider from './ParallaxDivider/ParallaxDivider'
-
-// import InfoIconSVG from './svg/InfoIconSVG'
-// import ScreensIconSVG from './svg/ScreensIconSVG'
 
 const GlobalStyle = createGlobalStyle`
   html { 
@@ -57,17 +55,20 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Portfolio = props => {
+  const [theme, setTheme] = useState('dark')
+  console.log(theme)
+
   return (
-    <>
-      <GlobalStyle theme={props.theme} />
-      <Header theme={props.theme} />
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <GlobalStyle theme={theme} />
+      <Header />
       <About />
       <Stack />
       <ParallaxDivider />
       <Work />
-      {/*<Community />*/}
-      <Menu viewport={props.viewport} />
-    </>
+      <Community />
+      <Menu />
+    </ThemeContext.Provider>
   )
 }
 
