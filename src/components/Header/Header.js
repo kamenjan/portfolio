@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { ReactBasicScroll } from 'react-basic-scroll'
 
 import { media, size } from '../../defines/media'
 
@@ -28,7 +29,7 @@ const bgImages = {
 }
 
 const Container = styled.div`
-  --ty-header: 0;
+  //--ty-header: 0;
 
   height: 220px;
   overflow: hidden;
@@ -36,6 +37,7 @@ const Container = styled.div`
 
   div:first-child {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     will-change: transform;
@@ -58,7 +60,8 @@ const Container = styled.div`
         width: 769px;
         height: 270px;
         top: 0;
-        content: url(${headerBgImageSMdark});
+        content: ${({ theme }) =>
+          `url(${bgImages[`headerBgImageSM${theme}`]})`};
       }
     }
   }
@@ -69,7 +72,8 @@ const Container = styled.div`
         width: 1024px;
         height: 360px;
         top: 0;
-        content: url(${headerBgImageMDdark});
+        content: ${({ theme }) =>
+          `url(${bgImages[`headerBgImageMD${theme}`]})`};
       }
     }
   }
@@ -80,7 +84,8 @@ const Container = styled.div`
         width: 1680px;
         height: 620px;
         top: -100px;
-        content: url(${headerBgImageLGdark});
+        content: ${({ theme }) =>
+          `url(${bgImages[`headerBgImageLG${theme}`]})`};
       }
     }
   }
@@ -91,7 +96,8 @@ const Container = styled.div`
         width: 2000px;
         height: 740px;
         top: -130px;
-        content: url(${headerBgImageXLdark});
+        content: ${({ theme }) =>
+          `url(${bgImages[`headerBgImageXL${theme}`]})`};
       }
     }
   }
@@ -180,24 +186,37 @@ const Value = styled.span`
 `
 
 const Header = ({ headerContent, theme }) => {
+  const config = {
+    from: 'top-top',
+    to: 'bottom-top',
+    props: {
+      '--ty-header': {
+        from: 0,
+        to: '15%',
+      },
+    },
+  }
+
   return (
     <Container theme={theme}>
-      <div>
-        <img alt={''} />
-        <Content>
-          {headerContent.map((line, i) => (
-            <JSDocLine key={i}>
-              <Tag>{line.tag}</Tag>
-              <Value>{line.value}</Value>
-              {line.links.map(({ href, displayName }, i) => (
-                <a href={href} key={i}>
-                  {displayName}
-                </a>
-              ))}
-            </JSDocLine>
-          ))}
-        </Content>
-      </div>
+      <ReactBasicScroll config={config}>
+        <div>
+          <img alt={''} />
+          <Content>
+            {headerContent.map((line, i) => (
+              <JSDocLine key={i}>
+                <Tag>{line.tag}</Tag>
+                <Value>{line.value}</Value>
+                {line.links.map(({ href, displayName }, i) => (
+                  <a href={href} key={i}>
+                    {displayName}
+                  </a>
+                ))}
+              </JSDocLine>
+            ))}
+          </Content>
+        </div>
+      </ReactBasicScroll>
     </Container>
   )
 }

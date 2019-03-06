@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 // import * as basicScroll from 'basicscroll'
 import styled from 'styled-components'
 
-import { CommentBlock, BlockTag } from './JSDoc'
+import { CommentBlock, BlockTag } from '../JSDoc'
 
 // const StyledHome = styled.div`
 //   background-color: var(--bgcolor);

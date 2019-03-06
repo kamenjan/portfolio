@@ -14,7 +14,7 @@ const AppContainer = () => {
     ),
   })
 
-  // TODO: This belongs in redux store
+  // TODO: Try ContextAPI for this simple UI state
   const [theme, setTheme] = useState('dark')
 
   const getViewportDimensions = () => {
@@ -35,11 +35,7 @@ const AppContainer = () => {
     return () => window.removeEventListener('resize', getViewportDimensions)
   }, [])
 
-  return (
-    <>
-      <Portfolio viewport={viewportDimensions} theme={theme} />
-    </>
-  )
+  return <Portfolio viewport={viewportDimensions} theme={theme} />
 }
 
 export default React.memo(AppContainer)

@@ -4,12 +4,13 @@ import { createGlobalStyle } from 'styled-components/macro'
 
 import 'normalize.css'
 
-import Header from './Header'
-import About from './About'
-import Stack from './Stack'
-import Work from './Work'
-import Community from './Community'
-import Menu from './Menu'
+import Header from './Header/Header'
+import About from './About/About'
+import Stack from './Stack/Stack'
+import Work from './Work/Work'
+import Community from './Community/Community'
+import Menu from './Menu/Menu'
+import ParallaxDivider from './ParallaxDivider/ParallaxDivider'
 
 // import InfoIconSVG from './svg/InfoIconSVG'
 // import ScreensIconSVG from './svg/ScreensIconSVG'
@@ -45,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
         &:visited {
           //color: #ab51ba;
         }
-      }      
+      }
     } 
   }
   *, *:before, *:after { 
@@ -59,11 +60,12 @@ const Portfolio = props => {
   return (
     <>
       <GlobalStyle theme={props.theme} />
-      <Header />
+      <Header theme={props.theme} />
       <About />
       <Stack />
+      <ParallaxDivider />
       <Work />
-      <Community />
+      {/*<Community />*/}
       <Menu viewport={props.viewport} />
     </>
   )
