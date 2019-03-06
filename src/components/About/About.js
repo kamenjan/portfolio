@@ -4,16 +4,19 @@ import styled, { keyframes } from 'styled-components'
 import { media } from '../../defines/media'
 
 // Header container CSS
-const StyledAbout = styled.div`
+const Container = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
 
-  .about-paragraph {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+
+  p {
     margin-top: 24px;
     margin-bottom: 24px;
-    max-width: 360px;
     padding: 0 8px;
 
     color: var(--color-contrast, #2b2b2b);
@@ -21,27 +24,35 @@ const StyledAbout = styled.div`
     line-height: 1.6em;
   }
 
+  p:first-child:before {
+    content: '/** ';
+  }
+
+  p:last-child:after {
+    content: ' */';
+  }
+
   @media ${media.SM} {
-    .about-paragraph {
-      max-width: 470px;
+    max-width: 470px;
+    p {
       font-size: 16px;
     }
   }
   @media ${media.MD} {
-    .about-paragraph {
-      max-width: 768px;
+    max-width: 768px;
+    p {
       font-size: 18px;
     }
   }
   @media ${media.LG} {
-    .about-paragraph {
-      max-width: 1024px;
+    max-width: 1024px;
+    p {
       font-size: 20px;
     }
   }
   @media ${media.XL} {
-    .about-paragraph {
-      max-width: 1280px;
+    max-width: 1280px;
+    p {
       font-size: 22px;
     }
   }
@@ -49,21 +60,22 @@ const StyledAbout = styled.div`
 
 const About = props => {
   return (
-    <StyledAbout>
-      <p className={'about-paragraph'}>
-        &#47;** I'm an allround web developer based <a href={''}>@Ljubljana</a>.
-        I enjoy building web applications and solving programming challenges
-        while having lots of fun in a chaotic world of JavaScript.
+    <Container>
+      <p>
+        I'm an allround web developer based{' '}
+        <a href={'https://en.wikipedia.org/wiki/Ljubljana'}>@Ljubljana</a>. I
+        enjoy building web applications and solving programming challenges while
+        having lots of fun in a chaotic world of JavaScript.
       </p>
-      <p className={'about-paragraph'}>
+      <p>
         I have a strong passion for learning new things and working in teams
         with experienced developers.
       </p>
-      <p className={'about-paragraph'}>
+      <p>
         When I'm not building web or solving puzzles on coding sites I like to
-        play strategic and fantasy board games. */
+        play strategic and fantasy board games.
       </p>
-    </StyledAbout>
+    </Container>
   )
 }
 
