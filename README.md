@@ -145,6 +145,9 @@ https://jsramblings.com/2018/02/04/styled-components-media-queries.html
 
 https://daveceddia.com/useeffect-hook-examples/
 
+useContext. I'm having some issues with data flow and relationship between providers and consumers.
+
+https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-inside-a-child-component
 
 ### Deploy process 
 
