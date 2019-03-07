@@ -11,7 +11,10 @@ import Stack from './Stack/Stack'
 import Work from './Work/Work'
 import Community from './Community/Community'
 import Menu from './Menu/Menu'
+
 import ParallaxDivider from './ParallaxDivider/ParallaxDivider'
+import Desk from './ParallaxDivider/Desk/Desk'
+import City from './ParallaxDivider/City/City'
 
 const GlobalStyle = createGlobalStyle`
   html { 
@@ -28,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
       --color-secondary: ${props =>
         props.theme === 'light' ? '#008000' : '#629755'};
       --color-tertiary: ${props =>
-        props.theme === 'light' ? '#cc7832' : '#cc7832'};                   
+        props.theme === 'light' ? '#cc7832' : '#cc7832'};               
     }
     box-sizing: border-box;
     body {
@@ -56,7 +59,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Portfolio = props => {
   const [theme, setTheme] = useState('dark')
-  console.log(theme)
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -64,9 +66,14 @@ const Portfolio = props => {
       <Header />
       <About />
       <Stack />
-      <ParallaxDivider />
+      <ParallaxDivider>
+        <Desk />
+      </ParallaxDivider>
       <Work />
       <Community />
+      <ParallaxDivider>
+        <City />
+      </ParallaxDivider>
       <Menu />
     </ThemeContext.Provider>
   )
