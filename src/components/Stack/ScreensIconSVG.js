@@ -2,29 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledScreensIcon = styled.svg`
-  height: 400px;
+  height: 80px;
   .color-contrast-stroke {
-    stroke: #a9b7c6;
+    stroke: var(--color-contrast, #2b2b2b);
   }
   .color-contrast-fill {
-    fill: #a9b7c6;
+    fill: var(--color-contrast, #2b2b2b);
   }
   .color-background-fill {
-    fill: #2b2b2b;
+    fill: var(--color-bg-primary, #2b2b2b);
   }
   .color-background-fill {
-    fill: #2b2b2b;
+    fill: var(--color-bg-primary, #2b2b2b);
   }
 `
 
-const ScreensIconSVG = props => {
+const ScreensIconSVG = ({ height }) => {
   return (
     <StyledScreensIcon
       viewBox='0 0 400 400'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
       xlinkHref='http://www.w3.org/1999/xlink'
-      id='screens'
     >
       <defs>
         <rect id='path-1' x='16' y='14' width='320' height='220' rx='20' />

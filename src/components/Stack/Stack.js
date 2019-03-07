@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { media, size } from '../../defines/media'
 
 import ScreensIconSVG from './ScreensIconSVG'
+import GearsIconSVG from './GearsIconSVG'
 
 const Container = styled.div`
   display: flex;
@@ -88,6 +89,16 @@ const Item = styled.span`
     display: none;
   }
 `
+const IconContainer = styled.div`
+  color: green;
+  &:after {
+    content: ', ';
+    color: orange;
+  }
+  &:last-child:after {
+    display: none;
+  }
+`
 
 const Stack = ({ stack }) => {
   return (
@@ -138,7 +149,7 @@ Stack.defaultProps = {
             {
               title: 'libraries_&_frameworks',
               itemList: [
-                'React',
+                'Angular',
                 'Redux',
                 'Materail-UI',
                 'Electron',
@@ -181,7 +192,7 @@ Stack.defaultProps = {
       ],
     },
     {
-      icon: ScreensIconSVG,
+      icon: GearsIconSVG,
       sections: [
         {
           title: 'Development Environment',
