@@ -16,29 +16,28 @@ const Container = styled.div`
   }
 
   &:hover {
-    background-color: #2b2b2b;
+    background-color: var(--color-bg-primary, #2b2b2b);
     cursor: pointer;
   }
-  .icon {
-    height: 18px;
-    margin-right: 16px;
+  svg {
+    margin-right: 8px;
   }
 `
 
 const MenuItem = props => {
-  console.log(props)
-
+  const Icon = props.icon ? props.icon : <span />
+  const iconHeight = props.height - 20
   return (
     <Container {...props}>
-      {props.icon} <span className='underline'>{props.shortcut}:</span>{' '}
-      {props.value}
+      <Icon height={iconHeight} theme={props.theme} />{' '}
+      <span className='underline'>{props.shortcut}:</span> {props.value}
     </Container>
   )
 }
 
 MenuItem.defaultProps = {
   height: 42,
-  icon: <span>icon</span>,
+  icon: <span />,
   shortcut: '1',
   value: 'Menu Item',
 }

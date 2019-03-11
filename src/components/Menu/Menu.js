@@ -2,12 +2,15 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import ThemeContext from '../../context/theme'
-
 import { media } from '../../defines/media'
-
 import MenuItem from './MenuItem'
-
 import burgerIcon from '../../static/burger.png'
+import InfoIcon from '../svg/InfoIconSVG'
+import HomeIcon from '../svg/HomeIconSVG'
+import StackIcon from '../svg/StackIconSVG'
+import KeyboardIcon from '../svg/KeyboardIconSVG'
+import CommunityIcon from '../svg/CommunityIconSVG'
+import ToggleIcon from '../svg/ToggleIconSVG'
 
 // Menu container CSS
 const Container = styled.div`
@@ -18,8 +21,8 @@ const Container = styled.div`
   width: 360px;
   padding-top: ${props => `${props.itemHeight}px`}
 
-  background-color: #3d3d3d;
-  color: #a9b7c6;
+  background-color: var(--color-bg-menu);
+  color: var(--color-contrast);
 
   border-left: 1px solid #676767;
   border-bottom: 1px solid #676767;
@@ -83,13 +86,14 @@ const Menu = props => {
       />
       <div id='status-bar-container'>
         {props.items.map((item, i) => (
-          <MenuItem key={i} {...item} height={props.itemHeight} />
+          <MenuItem key={i} {...item} theme={theme} height={props.itemHeight} />
         ))}
         <MenuItem
           height={props.itemHeight}
-          icon={'ikonca'}
-          value={'toggle'}
+          value={'Theme'}
+          icon={ToggleIcon}
           shortcut={'5'}
+          theme={theme}
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         />
       </div>
@@ -101,23 +105,23 @@ Menu.defaultProps = {
   itemHeight: 42,
   items: [
     {
-      icon: <span>ICON</span>,
+      icon: HomeIcon,
       value: 'Top',
       shortcut: '1',
     },
     {
-      icon: <span>ICON</span>,
+      icon: StackIcon,
       value: 'Stack',
       shortcut: '2',
     },
     {
-      icon: <span>ICON</span>,
+      icon: KeyboardIcon,
       value: 'Work',
       shortcut: '3',
     },
     {
-      icon: <span>ICON</span>,
-      value: 'JAdidadi',
+      icon: CommunityIcon,
+      value: 'Community',
       shortcut: '4',
     },
   ],
