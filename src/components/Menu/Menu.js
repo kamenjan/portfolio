@@ -2,15 +2,13 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import ThemeContext from '../../context/theme'
-import { media } from '../../defines/media'
+import { media, size } from '../../defines/media'
 import MenuItem from './MenuItem'
 import burgerIcon from '../../static/burger.png'
-import InfoIcon from '../svg/InfoIconSVG'
-import HomeIcon from '../svg/HomeIconSVG'
-import StackIcon from '../svg/StackIconSVG'
-import KeyboardIcon from '../svg/KeyboardIconSVG'
-import CommunityIcon from '../svg/CommunityIconSVG'
 import ToggleIcon from '../svg/ToggleIconSVG'
+import InfoIcon from '../svg/InfoIconSVG'
+
+import { Link } from 'react-scroll'
 
 // Menu container CSS
 const Container = styled.div`
@@ -41,6 +39,19 @@ const Container = styled.div`
     border-left: none;
     border-bottom: none;
   }
+  
+  a {
+    color: var(--color-contrast);
+    text-decoration: none;
+    &:hover {
+      color: var(--color-contrast);
+      text-decoration: none;
+    }
+    &:visited {
+      color: var(--color-contrast);
+    }
+  }
+
 
   #status-bar-burger {
     position: fixed;
@@ -55,11 +66,17 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     @media ${media.MD} {
-      max-width: 769px;
+      max-width: ${`${size.MD}px`};
       margin-left: auto;
       margin-right: auto;
       flex-flow: row;
     }
+    @media ${media.LG} {
+      max-width: ${`${size.LG}px`};
+    }
+    @media ${media.XL} {
+      max-width: ${`${size.XL}px`};
+    }            
   }
 `
 
@@ -68,7 +85,8 @@ const Menu = props => {
   const [menuOpened, setMenuOpened] = useState(false)
 
   // Calculate mobile menu height based on menu item number and height
-  const menuHeight = props.items.length * props.itemHeight + props.itemHeight
+  const menuItemCount = 5
+  const menuHeight = menuItemCount * props.itemHeight + props.itemHeight
 
   const { theme, setTheme } = useContext(ThemeContext)
 
@@ -86,45 +104,36 @@ const Menu = props => {
       />
       <div id='status-bar-container'>
         {props.items.map((item, i) => (
-          <MenuItem key={i} {...item} theme={theme} height={props.itemHeight} />
+          <Link key={i} to={item.scrollTo} smooth={true} duration={500}>
+            <MenuItem
+              {...item}
+              shortcut={i + 1}
+              theme={theme}
+              height={props.itemHeight}
+              onClick={() => setMenuOpened(!menuOpened)}
+            />
+          </Link>
         ))}
         <MenuItem
           height={props.itemHeight}
           value={'Theme'}
           icon={ToggleIcon}
-          shortcut={'5'}
+          shortcut={`${props.items.length + 1}`}
           theme={theme}
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={() => {
+            setTheme(theme === 'dark' ? 'light' : 'dark')
+          }}
+        />
+        <MenuItem
+          height={props.itemHeight}
+          value={'Info'}
+          icon={InfoIcon}
+          shortcut={`${props.items.length + 2}`}
+          theme={theme}
         />
       </div>
     </Container>
   )
-}
-
-Menu.defaultProps = {
-  itemHeight: 42,
-  items: [
-    {
-      icon: HomeIcon,
-      value: 'Top',
-      shortcut: '1',
-    },
-    {
-      icon: StackIcon,
-      value: 'Stack',
-      shortcut: '2',
-    },
-    {
-      icon: KeyboardIcon,
-      value: 'Work',
-      shortcut: '3',
-    },
-    {
-      icon: CommunityIcon,
-      value: 'Community',
-      shortcut: '4',
-    },
-  ],
 }
 
 export default Menu

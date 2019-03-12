@@ -19,11 +19,11 @@ import headerBgImageLGlight from './static/bg-header-lg-light.jpg'
 import headerBgImageXLlight from './static/bg-header-xl-light.jpg'
 
 const bgImages = {
-  headerBgImageXSdark,
-  headerBgImageSMdark,
-  headerBgImageMDdark,
-  headerBgImageLGdark,
-  headerBgImageXLdark,
+  XS: headerBgImageXSdark,
+  SM: headerBgImageSMdark,
+  MD: headerBgImageMDdark,
+  LG: headerBgImageLGdark,
+  XL: headerBgImageXLdark,
   headerBgImageXSlight,
   headerBgImageSMlight,
   headerBgImageMDlight,
@@ -52,7 +52,9 @@ const Container = styled.div`
       min-width: 469px;
       height: 330px;
       top: -40px;
-      content: ${({ theme }) => `url(${bgImages[`headerBgImageXS${theme}`]})`};
+      content: ${`url(${bgImages.XS})`};
+      filter: ${({ theme }) =>
+        `brightness(${theme === 'light' ? '350' : '100'}%)`};
     }
   }
 
@@ -63,8 +65,7 @@ const Container = styled.div`
         width: 769px;
         height: 270px;
         top: 0;
-        content: ${({ theme }) =>
-          `url(${bgImages[`headerBgImageSM${theme}`]})`};
+        content: ${`url(${bgImages.SM})`};
       }
     }
   }
@@ -75,8 +76,7 @@ const Container = styled.div`
         width: 1024px;
         height: 360px;
         top: 0;
-        content: ${({ theme }) =>
-          `url(${bgImages[`headerBgImageMD${theme}`]})`};
+        content: ${`url(${bgImages.MD})`};
       }
     }
   }
@@ -87,8 +87,7 @@ const Container = styled.div`
         width: 1680px;
         height: 620px;
         top: -100px;
-        content: ${({ theme }) =>
-          `url(${bgImages[`headerBgImageLG${theme}`]})`};
+        content: ${`url(${bgImages.LG})`};
       }
     }
   }
@@ -99,8 +98,7 @@ const Container = styled.div`
         width: 2000px;
         height: 740px;
         top: -130px;
-        content: ${({ theme }) =>
-          `url(${bgImages[`headerBgImageXL${theme}`]})`};
+        content: ${`url(${bgImages.XL})`};
       }
     }
   }
@@ -188,7 +186,7 @@ const Value = styled.span`
   color: orange;
 `
 
-const Header = ({ headerContent }) => {
+const Header = ({ headerContent, name }) => {
   // Theme context
   const { theme } = useContext(ThemeContext)
 
@@ -205,7 +203,7 @@ const Header = ({ headerContent }) => {
   }
 
   return (
-    <Container theme={theme}>
+    <Container theme={theme} name={name}>
       <ReactBasicScroll config={config}>
         <div>
           <img alt={''} />

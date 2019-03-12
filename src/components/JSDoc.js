@@ -71,31 +71,31 @@ const JSDoc = props => {
   return (
     <Container>
       <section>
-        {props.docSections.map(jobSection => {
+        {props.docSections.map((jobSection, i) => {
           switch (jobSection.type) {
             case 'paragraph':
               return (
-                <Tag>
+                <Tag key={i}>
                   <TagName>{jobSection.docTag}</TagName>
                   {jobSection.content}
                 </Tag>
               )
             case 'array':
               return (
-                <Tag>
+                <Tag key={i}>
                   <TagName>{jobSection.docTag}</TagName>
-                  {jobSection.content.map(arrayItem => (
-                    <span>{arrayItem}</span>
+                  {jobSection.content.map((arrayItem, i) => (
+                    <span key={i}>{arrayItem}</span>
                   ))}
                 </Tag>
               )
             case 'list':
               return (
-                <Tag>
+                <Tag key={i}>
                   <TagName>{jobSection.docTag}</TagName>
                   <ul>
-                    {jobSection.content.map(listItem => (
-                      <li>{listItem}</li>
+                    {jobSection.content.map((listItem, i) => (
+                      <li key={i}>{listItem}</li>
                     ))}
                   </ul>
                 </Tag>

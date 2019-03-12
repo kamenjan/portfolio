@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 import { media } from '../../defines/media'
 
@@ -10,9 +10,9 @@ const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: auto;
+  p:first-child:before {
+    content: '/** ';
+  }
 
   p {
     margin-top: 24px;
@@ -22,39 +22,22 @@ const Container = styled.div`
     color: var(--color-contrast, #2b2b2b);
     font-size: 14px;
     line-height: 1.6em;
-  }
-
-  p:first-child:before {
-    content: '/** ';
+    @media ${media.SM} {
+      font-size: 16px;
+    }
+    @media ${media.MD} {
+      font-size: 18px;
+    }
+    @media ${media.LG} {
+      font-size: 20px;
+    }
+    @media ${media.XL} {
+      font-size: 22px;
+    }
   }
 
   p:last-child:after {
     content: ' */';
-  }
-
-  @media ${media.SM} {
-    max-width: 470px;
-    p {
-      font-size: 16px;
-    }
-  }
-  @media ${media.MD} {
-    max-width: 768px;
-    p {
-      font-size: 18px;
-    }
-  }
-  @media ${media.LG} {
-    max-width: 1024px;
-    p {
-      font-size: 20px;
-    }
-  }
-  @media ${media.XL} {
-    max-width: 1280px;
-    p {
-      font-size: 22px;
-    }
   }
 `
 

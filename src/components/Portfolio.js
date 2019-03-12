@@ -1,23 +1,31 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 
 import ThemeContext from '../context/theme'
 
 import { createGlobalStyle } from 'styled-components/macro'
 import 'normalize.css'
 import { media, size } from '../defines/media'
+import styled from 'styled-components'
 
 import Header from './Header/Header'
-import About from './About/About'
-import Stack from './Stack/Stack'
 
-import JSDoc from './JSDoc'
-import Menu from './Menu/Menu'
+import About from './About/About'
+
+import Stack from './Stack/Stack'
+import GearsIconSVG from './Stack/GearsIconSVG'
+import ScreensIconSVG from './Stack/ScreensIconSVG'
+
+import JSDoc from './JSDoc' // Container For Work & Community subsections
 
 import ParallaxDivider from './ParallaxDivider/ParallaxDivider'
 import Desk from './ParallaxDivider/Desk/Desk'
 import City from './ParallaxDivider/City/City'
 
-import styled from 'styled-components'
+import Menu from './Menu/Menu'
+import HomeIcon from './svg/HomeIconSVG'
+import StackIcon from './svg/StackIconSVG'
+import KeyboardIcon from './svg/KeyboardIconSVG'
+import CommunityIcon from './svg/CommunityIconSVG'
 
 const GlobalStyle = createGlobalStyle`
   html { 
@@ -62,12 +70,13 @@ const GlobalStyle = createGlobalStyle`
     list-style-type: none;
   }
 `
-
 const DocsContainer = styled.div`
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
+`
+const SiteSection = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 360px;
@@ -84,7 +93,6 @@ const DocsContainer = styled.div`
     max-width: ${`${size.XL}px`};
   }
 `
-
 const Heading = styled.h1`
   width: 100%;
   text-align: center;
@@ -243,35 +251,182 @@ const communityProjects = [
     ],
   },
 ]
+const techStack = [
+  {
+    icon: ScreensIconSVG,
+    sections: [
+      {
+        title: 'JavaScript',
+        subsections: [
+          {
+            title: 'specifications_&_compiler',
+            itemList: ['ES2018+', 'Babel'],
+          },
+          {
+            title: 'build_&_dev_tools',
+            itemList: ['npm', 'Webpack', 'ESLint', 'Prettier'],
+          },
+          {
+            title: 'libraries_&_frameworks',
+            itemList: [
+              'Angular',
+              'Redux',
+              'Materail-UI',
+              'Electron',
+              'jQuery',
+              'GSAP',
+              'Lottie',
+              'HTML5 Canvas',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Layout & Styling',
+        subsections: [
+          {
+            title: 'preprocessors',
+            itemList: ['SASS', 'LESS', 'CSS-in-JS'],
+          },
+          {
+            title: 'tools',
+            itemList: [
+              'Flexbox',
+              'Grid',
+              'Bootstrap',
+              'CSS Variables',
+              'CCS Animations',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Design Tools',
+        subsections: [
+          {
+            title: 'apps',
+            itemList: ['Sketch', 'Adobe Photoshop'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    icon: GearsIconSVG,
+    sections: [
+      {
+        title: 'Development Environment',
+        subsections: [
+          {
+            title: 'code_versioning',
+            itemList: ['Git', 'Subversion'],
+          },
+          {
+            title: 'ide_&_editors',
+            itemList: ['Sublime Text', 'WebStorm', 'NetBeans'],
+          },
+          {
+            title: 'languages',
+            itemList: ['JavaScript', 'PHP', 'Java', 'C#', 'Bash'],
+          },
+          {
+            title: 'os',
+            itemList: ['osx', 'ubuntu', 'debian'],
+          },
+        ],
+      },
+      {
+        title: 'Servers & Server Scripting',
+        subsections: [
+          {
+            title: 'servers',
+            itemList: ['Apache', 'Nginx', 'Node.js'],
+          },
+          {
+            title: 'frameworks',
+            itemList: ['Express', 'CodeIgniter'],
+          },
+        ],
+      },
+      {
+        title: 'Data',
+        subsections: [
+          {
+            title: 'rdbms',
+            itemList: ['MySQL', 'PostgreSQL', 'SQLite'],
+          },
+          {
+            title: 'native',
+            itemList: ['JSON', 'XML'],
+          },
+        ],
+      },
+    ],
+  },
+]
 
-const Portfolio = props => {
+const Portfolio = () => {
   const [theme, setTheme] = useState('dark')
+
+  const menuProps = {
+    itemHeight: 42,
+    items: [
+      {
+        icon: HomeIcon,
+        value: 'Top',
+        scrollTo: 'topScrollAnchor',
+      },
+      {
+        icon: StackIcon,
+        value: 'Stack',
+        scrollTo: 'stackScrollAnchor',
+      },
+      {
+        icon: KeyboardIcon,
+        value: 'Work',
+        scrollTo: 'workScrollAnchor',
+      },
+      {
+        icon: CommunityIcon,
+        value: 'Community',
+        scrollTo: 'communityScrollAnchor',
+      },
+    ],
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <GlobalStyle theme={theme} />
-      <Header />
-      <About />
-      <Stack />
+      <Header name={'topScrollAnchor'} />
+      <SiteSection>
+        <About />
+      </SiteSection>
+      <SiteSection name={'stackScrollAnchor'}>
+        <Stack stack={techStack} />
+      </SiteSection>
       <ParallaxDivider>
-        <Desk />
+        <Desk name={'parallaxScrollAnchor'} />
       </ParallaxDivider>
-      <DocsContainer>
-        <Heading>Work</Heading>
-        {jobs.map(project => (
-          <JSDoc docSections={project.docSections} />
-        ))}
-      </DocsContainer>
-      <DocsContainer>
-        <Heading>Community</Heading>
-        {communityProjects.map(project => (
-          <JSDoc docSections={project.docSections} />
-        ))}
-      </DocsContainer>
+      <SiteSection>
+        <DocsContainer name={'workScrollAnchor'}>
+          <Heading>Work</Heading>
+          {jobs.map((job, i) => (
+            <JSDoc key={i} docSections={job.docSections} />
+          ))}
+        </DocsContainer>
+      </SiteSection>
+      <SiteSection>
+        <DocsContainer name={'communityScrollAnchor'}>
+          <Heading>Community</Heading>
+          {communityProjects.map((project, i) => (
+            <JSDoc key={i} docSections={project.docSections} />
+          ))}
+        </DocsContainer>
+      </SiteSection>
       <ParallaxDivider>
         <City />
       </ParallaxDivider>
-      <Menu />
+      <Menu {...menuProps} />
     </ThemeContext.Provider>
   )
 }
