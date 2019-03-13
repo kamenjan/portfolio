@@ -96,29 +96,10 @@ Tools: babel, eslint, sass, hotreload, flexbox
 
 ### 3. Build the production version using React and GitHub Pages 
 
-
- 
 #### Components
 
 ##### <Menu>
-props: 
-	- <MenuItem> array
-		- item.svg/icon
-		- item.title
-		- item.desktop-horizontal-align(left/right)
-
-defines:
-	- consecutive number (n,n+1,..)
-	- css styles (font,color/mobileVSdesktop)
-		- item-height
-		- mobile-container-height = item.length * item-height + 1 // (1 for burger button padding when menu is opened on mobile screen)
-		
 ##### <MenuItem>
-props: 
-    - svg/icon
-    - title
-    - desktop-horizontal-align(left/right)
-    
 ##### <AboveTheFold>
 ##### <HeroArea>
 ##### About
@@ -128,8 +109,32 @@ props:
 ##### Title
 ##### JSDoc
 
+## Issues, notes & todos
 
-## Issues, notes & todos 
+### SVGs
+
+There is some funny stuff surrounding SVGs. It mostly has to do with outdated specs and discontinued development :(
+But they remain awesome tool for optimized animations and still feel most native to web environment.
+
+I've created some custom svg icons for this project. Workflow is still a bit fuzzy, but the main idea is to create them using Sketch. Note that all smaller components inside icon's bounding rectangle should have placeholders so that there is no transformation in Sketch svg code output - flatten does not work as one would imagine. Also masks created in Sketch crop their content if it exceeds masks bounding rectangle. This is solved by exporting content separately and fusing it in code.
+
+For implementing svgs in React I decided to wrap them in components. This allows me to treat them the same as all other presentational components, including styled components. Unfortunately I used classes for styling in the first iteration of svg implementation without React. Idea is to remove classes and define the best svg to react workflow.
+
+I'm also using svg.js as quality of life plugin for manipulating svgs.
+
+Light weight library for manipulating SVG assets: http://svgjs.com
+Nice example of isometric SVG asset with clean structure: https://github.com/projapati66/Svg-IsometricCityAnimation
+Notes on SVG Namespaces: https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course
+SVG to Native React Component converter: https://github.com/smooth-code/svgr
+SVGO list of plugins: https://github.com/svg/svgo
+SVG specs and 3D compatibility issues: https://greensock.com/forums/topic/12022-3d-transform-not-working-in-firefox/
+
+Exporting SVGs using Sketch, best practices: 
+https://medium.com/sketch-app-sources/the-best-way-to-export-an-svg-from-sketch-dd8c66bb6ef2
+https://medium.com/sketch-app-sources/exploring-ways-to-export-clean-svg-icons-with-sketch-the-correct-way-752e73ec4694
+
+Sketch preferences: https://www.sketchapp.com/docs/preferences//?utm_source=designernews
+Animating along a path using GSAP: https://greensock.com/forums/topic/13581-animate-svg-object-along-motion-path/
 
 ### Default props and prop check
 
@@ -141,13 +146,27 @@ https://stackoverflow.com/questions/38786973/how-to-set-component-default-props-
 
 https://jsramblings.com/2018/02/04/styled-components-media-queries.html
 
+#### CSS tricks
+
+using relative size for fonts to avoid setting size in pixels for all the different layouts: https://css-tricks.com/viewport-sized-typography/
+
 ### Hooks
 
 https://daveceddia.com/useeffect-hook-examples/
 
+https://overreacted.io/a-complete-guide-to-useeffect/
+
 useContext. I'm having some issues with data flow and relationship between providers and consumers.
 
 https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-inside-a-child-component
+
+### Memoize app
+
+Check which components get unnecessary re-renders and memoize them
+
+### Nav bar scrolling
+
+https://scotch.io/tutorials/implementing-smooth-scrolling-in-react
 
 ### Deploy process 
 
