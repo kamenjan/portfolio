@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ReactBasicScroll } from 'react-basic-scroll'
 
 const StyledScreensIcon = styled.svg`
   height: 80px;
@@ -15,9 +16,30 @@ const StyledScreensIcon = styled.svg`
   .color-background-fill {
     fill: var(--color-bg-primary, #2b2b2b);
   }
+
+  #screen-mobile-lines {
+    will-change: transform;
+    transform: translateY(var(--ty-screens));
+  }
+
+  #screen-desktop-lines {
+    will-change: transform;
+    transform: translateY(var(--ty-screens));
+  }
 `
 
 const ScreensIconSVG = ({ height }) => {
+  const config = {
+    from: 'top-bottom',
+    to: 'bottom-top',
+    props: {
+      '--ty-screens': {
+        from: '0',
+        to: '-150%',
+      },
+    },
+  }
+
   return (
     <StyledScreensIcon
       viewBox='0 0 400 400'
@@ -47,51 +69,53 @@ const ScreensIconSVG = ({ height }) => {
           xlinkHref='#path-1'
         />
         <g id='screen-desktop-lines-container' mask='url(#screen-desktop-mask)'>
-          <g
-            id='screen-desktop-lines'
-            strokeLinecap='square'
-            className='color-contrast-stroke'
-            strokeWidth='10'
-          >
-            <path d='M50,1176 L300,1176' />
-            <path d='M99,1126 L224,1126' />
-            <path d='M50,1101 L163,1101' />
-            <path d='M50,1076 L300,1076' />
-            <path d='M50,1026 L300,1026' />
-            <path d='M50,1151 L300,1151' />
-            <path d='M50,1001 L224,1001' />
-            <path d='M99,926 L224,926' />
-            <path d='M99,901 L224,901' />
-            <path d='M99,976 L224,976' />
-            <path d='M99,951 L224,951' />
-            <path d='M50,876 L300,876' />
-            <path d='M50,826 L300,826' />
-            <path d='M50,801 L300,801' />
-            <path d='M50,776 L300,776' />
-            <path d='M50,751 L224,751' />
-            <path d='M99,726 L224,726' />
-            <path d='M50,674 L224,674' />
-            <path d='M50,649 L163,649' />
-            <path d='M50,624 L163,624' />
-            <path d='M50,599 L163,599' />
-            <path d='M50,549 L224,549' />
-            <path d='M50,524 L224,524' />
-            <path d='M99,474 L224,474' />
-            <path d='M50,574 L300,574' />
-            <path d='M50,399 L224,399' />
-            <path d='M50,372 L224,372' />
-            <path d='M50,347 L163,347' />
-            <path d='M50,424 L300,424' />
-            <path d='M50,297 L300,297' />
-            <path d='M50,272 L300,272' />
-            <path d='M50,247 L300,247' />
-            <path d='M50,222 L224,222' />
-            <path d='M50,159 L300,159' />
-            <path d='M50,134 L300,134' />
-            <path d='M50,109 L300,109' />
-            <path d='M99,59 L224,59' />
-            <path d='M99,34 L224,34' />
-          </g>
+          <ReactBasicScroll config={config}>
+            <g
+              id='screen-desktop-lines'
+              strokeLinecap='square'
+              className='color-contrast-stroke'
+              strokeWidth='10'
+            >
+              <path d='M50,1176 L300,1176' />
+              <path d='M99,1126 L224,1126' />
+              <path d='M50,1101 L163,1101' />
+              <path d='M50,1076 L300,1076' />
+              <path d='M50,1026 L300,1026' />
+              <path d='M50,1151 L300,1151' />
+              <path d='M50,1001 L224,1001' />
+              <path d='M99,926 L224,926' />
+              <path d='M99,901 L224,901' />
+              <path d='M99,976 L224,976' />
+              <path d='M99,951 L224,951' />
+              <path d='M50,876 L300,876' />
+              <path d='M50,826 L300,826' />
+              <path d='M50,801 L300,801' />
+              <path d='M50,776 L300,776' />
+              <path d='M50,751 L224,751' />
+              <path d='M99,726 L224,726' />
+              <path d='M50,674 L224,674' />
+              <path d='M50,649 L163,649' />
+              <path d='M50,624 L163,624' />
+              <path d='M50,599 L163,599' />
+              <path d='M50,549 L224,549' />
+              <path d='M50,524 L224,524' />
+              <path d='M99,474 L224,474' />
+              <path d='M50,574 L300,574' />
+              <path d='M50,399 L224,399' />
+              <path d='M50,372 L224,372' />
+              <path d='M50,347 L163,347' />
+              <path d='M50,424 L300,424' />
+              <path d='M50,297 L300,297' />
+              <path d='M50,272 L300,272' />
+              <path d='M50,247 L300,247' />
+              <path d='M50,222 L224,222' />
+              <path d='M50,159 L300,159' />
+              <path d='M50,134 L300,134' />
+              <path d='M50,109 L300,109' />
+              <path d='M99,59 L224,59' />
+              <path d='M99,34 L224,34' />
+            </g>
+          </ReactBasicScroll>
         </g>
       </g>
       <g id='mobile' transform='translate(0.000000, 79.000000)'>
