@@ -118,8 +118,9 @@ const Menu = props => {
           height={props.itemHeight}
           value={'Theme'}
           icon={ToggleIcon}
-          shortcut={`${props.items.length + 1}`}
+          shortcut={props.items.length + 1}
           theme={theme}
+          floatRight
           onClick={() => {
             setTheme(theme === 'dark' ? 'light' : 'dark')
           }}
@@ -128,7 +129,7 @@ const Menu = props => {
           height={props.itemHeight}
           value={'Info'}
           icon={InfoIcon}
-          shortcut={`${props.items.length + 2}`}
+          shortcut={props.items.length + 2}
           theme={theme}
         />
       </div>

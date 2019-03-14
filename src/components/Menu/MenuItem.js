@@ -1,6 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
+import styled from 'styled-components'
 import { media } from '../../defines/media'
 
 const Container = styled.div`
@@ -12,6 +13,7 @@ const Container = styled.div`
   border-top: 1px solid #676767;
 
   @media ${media.MD} {
+    margin-left: ${props => props.floatRight && 'auto'};
     border-top: none;
   }
 
@@ -50,10 +52,14 @@ const MenuItem = props => {
   )
 }
 
-MenuItem.defaultProps = {
-  height: 42,
-  icon: <span />,
-  value: 'Menu Item',
+MenuItem.propTypes = {
+  height: PropTypes.number,
+  icon: PropTypes.func,
+  onClick: PropTypes.func,
+  scrollTo: PropTypes.string,
+  shortcut: PropTypes.number,
+  theme: PropTypes.string,
+  value: PropTypes.string.isRequired,
 }
 
 export default MenuItem

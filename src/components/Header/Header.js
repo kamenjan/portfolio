@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import ThemeContext from '../../context/theme'
 
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
 
 import { media, size } from '../../defines/media'
