@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "738087a8319155b33a3d",
-    "url": "/portfolio/static/js/main.b1e920db.chunk.js"
+    "revision": "86c78667e269c10e4117",
+    "url": "/portfolio/static/js/main.2ccf4969.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
     "url": "/portfolio/static/js/runtime~main.f308c8e6.js"
   },
   {
-    "revision": "4206b0705f1ff1ab10a6",
+    "revision": "92a0f5fe2583e71c3cd7",
     "url": "/portfolio/static/css/2.8b49865a.chunk.css"
   },
   {
-    "revision": "4206b0705f1ff1ab10a6",
-    "url": "/portfolio/static/js/2.ea2fe622.chunk.js"
+    "revision": "92a0f5fe2583e71c3cd7",
+    "url": "/portfolio/static/js/2.7d101a6a.chunk.js"
   },
   {
     "revision": "39e2e00b4d1a7478557dc043913f31c6",
@@ -34,26 +34,6 @@ self.__precacheManifest = [
   {
     "revision": "98c985d434bfe189b65512c634b66735",
     "url": "/portfolio/static/media/bg-header-xl-dark.98c985d4.jpg"
-  },
-  {
-    "revision": "045deedfc771c66ff36446d346365abd",
-    "url": "/portfolio/static/media/bg-header-xs-light.045deedf.jpg"
-  },
-  {
-    "revision": "ef36fad328a06ded48f3c2ad08ede027",
-    "url": "/portfolio/static/media/bg-header-sm-light.ef36fad3.jpg"
-  },
-  {
-    "revision": "9026bcd5f5ea09ff2e62b3439b152304",
-    "url": "/portfolio/static/media/bg-header-md-light.9026bcd5.jpg"
-  },
-  {
-    "revision": "896961a9f3211b50e2b5f86732ab58e8",
-    "url": "/portfolio/static/media/bg-header-lg-light.896961a9.jpg"
-  },
-  {
-    "revision": "9ffc4451b799a4bcc8ce1c37fde6883f",
-    "url": "/portfolio/static/media/bg-header-xl-light.9ffc4451.jpg"
   },
   {
     "revision": "c171bf463a87fa08e36245b9a9e5d7c6",
@@ -96,7 +76,7 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/bg-city-xl-dark.d5a3fdc7.jpg"
   },
   {
-    "revision": "2f1669eee18bb1ac92775f89dc545522",
+    "revision": "4292aae15f9a4f36337e5d6e0cde5d84",
     "url": "/portfolio/index.html"
   }
 ];

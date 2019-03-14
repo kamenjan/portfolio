@@ -1,13 +1,13 @@
 {
-  "main.js": "/portfolio/static/js/main.b1e920db.chunk.js",
-  "main.js.map": "/portfolio/static/js/main.b1e920db.chunk.js.map",
+  "main.js": "/portfolio/static/js/main.2ccf4969.chunk.js",
+  "main.js.map": "/portfolio/static/js/main.2ccf4969.chunk.js.map",
   "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
   "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
   "static/css/2.8b49865a.chunk.css": "/portfolio/static/css/2.8b49865a.chunk.css",
-  "static/js/2.ea2fe622.chunk.js": "/portfolio/static/js/2.ea2fe622.chunk.js",
-  "static/js/2.ea2fe622.chunk.js.map": "/portfolio/static/js/2.ea2fe622.chunk.js.map",
+  "static/js/2.7d101a6a.chunk.js": "/portfolio/static/js/2.7d101a6a.chunk.js",
+  "static/js/2.7d101a6a.chunk.js.map": "/portfolio/static/js/2.7d101a6a.chunk.js.map",
   "index.html": "/portfolio/index.html",
-  "precache-manifest.962b7ce54f405c5991ea2accae1f7ae2.js": "/portfolio/precache-manifest.962b7ce54f405c5991ea2accae1f7ae2.js",
+  "precache-manifest.e959090d4cd8900947abb1a9bd568629.js": "/portfolio/precache-manifest.e959090d4cd8900947abb1a9bd568629.js",
   "service-worker.js": "/portfolio/service-worker.js",
   "static/css/2.8b49865a.chunk.css.map": "/portfolio/static/css/2.8b49865a.chunk.css.map",
   "static/media/bg-city-lg-dark.jpg": "/portfolio/static/media/bg-city-lg-dark.dc74ab9f.jpg",
@@ -21,13 +21,8 @@
   "static/media/bg-desk-xl-dark.jpg": "/portfolio/static/media/bg-desk-xl-dark.98dd4cc1.jpg",
   "static/media/bg-desk-xs-dark.jpg": "/portfolio/static/media/bg-desk-xs-dark.c171bf46.jpg",
   "static/media/bg-header-lg-dark.jpg": "/portfolio/static/media/bg-header-lg-dark.5a8ae01a.jpg",
-  "static/media/bg-header-lg-light.jpg": "/portfolio/static/media/bg-header-lg-light.896961a9.jpg",
   "static/media/bg-header-md-dark.jpg": "/portfolio/static/media/bg-header-md-dark.f876045d.jpg",
-  "static/media/bg-header-md-light.jpg": "/portfolio/static/media/bg-header-md-light.9026bcd5.jpg",
   "static/media/bg-header-sm-dark.jpg": "/portfolio/static/media/bg-header-sm-dark.99cabc33.jpg",
-  "static/media/bg-header-sm-light.jpg": "/portfolio/static/media/bg-header-sm-light.ef36fad3.jpg",
   "static/media/bg-header-xl-dark.jpg": "/portfolio/static/media/bg-header-xl-dark.98c985d4.jpg",
-  "static/media/bg-header-xl-light.jpg": "/portfolio/static/media/bg-header-xl-light.9ffc4451.jpg",
-  "static/media/bg-header-xs-dark.jpg": "/portfolio/static/media/bg-header-xs-dark.39e2e00b.jpg",
-  "static/media/bg-header-xs-light.jpg": "/portfolio/static/media/bg-header-xs-light.045deedf.jpg"
+  "static/media/bg-header-xs-dark.jpg": "/portfolio/static/media/bg-header-xs-dark.39e2e00b.jpg"
 }
