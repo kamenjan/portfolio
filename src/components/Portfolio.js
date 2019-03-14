@@ -75,6 +75,11 @@ const DocsContainer = styled.div`
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
+  & > * {
+    @media ${media.MD} {
+      width: 50%;
+    }
+  }
 `
 const SiteSection = styled.div`
   margin-left: auto;
@@ -113,6 +118,7 @@ const jobs = [
       {
         docTag: 'name',
         type: 'paragraph',
+        lineBreakAfter: true,
         content: (
           <span>
             <a href=''>termitnjak</a> 2020-2030
@@ -122,18 +128,21 @@ const jobs = [
       {
         docTag: 'summary',
         type: 'paragraph',
+        lineBreakAfter: true,
         content:
           'Small company offering B2B and B2C web development, consulting and hosting services to EU and worldwide markets.',
       },
       {
         docTag: 'role',
         type: 'paragraph',
+        lineBreakAfter: true,
         content:
           'I was brought on board as a frontend developer, but later I also assisted on system and cloud administration.',
       },
       {
         docTag: 'responsibilities',
         type: 'list',
+        lineBreakAfter: true,
         content: ['doing this', 'doing that'],
       },
       {
@@ -402,22 +411,23 @@ const Portfolio = () => {
         <About />
       </SiteSection>
       <SiteSection name={'stackScrollAnchor'}>
+        <Heading>Stack</Heading>
         <Stack stack={techStack} />
       </SiteSection>
       <ParallaxDivider>
-        <Desk name={'parallaxScrollAnchor'} />
+        <Desk />
       </ParallaxDivider>
-      <SiteSection>
-        <DocsContainer name={'workScrollAnchor'}>
-          <Heading>Work</Heading>
+      <SiteSection name={'workScrollAnchor'}>
+        <Heading>Work</Heading>
+        <DocsContainer>
           {jobs.map((job, i) => (
             <JSDoc key={i} docSections={job.docSections} />
           ))}
         </DocsContainer>
       </SiteSection>
-      <SiteSection>
-        <DocsContainer name={'communityScrollAnchor'}>
-          <Heading>Community</Heading>
+      <SiteSection name={'communityScrollAnchor'}>
+        <Heading>Community</Heading>
+        <DocsContainer>
           {communityProjects.map((project, i) => (
             <JSDoc key={i} docSections={project.docSections} />
           ))}
