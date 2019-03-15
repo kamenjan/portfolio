@@ -11,78 +11,102 @@ const Container = styled.div`
   text-align: center;
   color: var(--color-contrast, '#a9b7c6');
 
+  svg {
+    height: 80px;
+  }
   h2 {
-    font-size: 12px;
+    margin-top: 32px;
+    font-size: 18px;
+    color: var(--color-primary, '#a9b7c6');
     &:before {
-      content: '// ';
+      content: '//\00a0';
     }
   }
   h3 {
-    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  p {
+    font-size: 13px;
+    line-height: 1.7em;
+    &:before {
+      content: '[\00a0';
+    }
+    &:after {
+      content: '\00a0]';
+    }
   }
 
   @media ${media.SM} {
+    svg {
+      height: 100px;
+    }
     h2 {
-      font-size: 14px;
+      font-size: 20px;
     }
     h3 {
-      font-size: 14px;
+      font-size: 16px;
+    }
+    p {
+      font-size: 15px;
     }
   }
   @media ${media.MD} {
+    svg {
+      height: 120px;
+    }
     h2 {
-      font-size: 16px;
+      font-size: 22px;
     }
     h3 {
-      font-size: 16px;
+      font-size: 18px;
+    }
+    p {
+      font-size: 17px;
     }
   }
   @media ${media.LG} {
+    svg {
+      height: 140px;
+    }
     h2 {
-      font-size: 18px;
+      font-size: 24px;
     }
     h3 {
-      font-size: 18px;
+      font-size: 20px;
+    }
+    p {
+      font-size: 19px;
     }
   }
   @media ${media.XL} {
+    svg {
+      height: 160px;
+    }
     h2 {
-      font-size: 20px;
+      font-size: 26px;
     }
     h3 {
-      font-size: 20px;
+      font-size: 22px;
+    }
+    p {
+      font-size: 21px;
     }
   }
 `
 const StackGroup = styled.div`
+  margin-bottom: 46px;
+  padding: 0 18px;
   @media ${media.LG} {
     width: 50%;
   }
 `
-const ItemList = styled.span`
-  font-size: 12px;
-  &:before {
-    content: '[ ';
-  }
-  &:after {
-    content: ' ]';
-  }
-`
 const Item = styled.span`
-  color: green;
+  color: var(--color-secondary, '#a9b7c6');
   &:after {
     content: ', ';
-    color: orange;
-  }
-  &:last-child:after {
-    display: none;
-  }
-`
-const IconContainer = styled.div`
-  color: green;
-  &:after {
-    content: ', ';
-    color: orange;
+    color: var(--color-tertiary, '#a9b7c6');
   }
   &:last-child:after {
     display: none;
@@ -103,11 +127,11 @@ const Stack = props => {
                 {section.subsections.map((subsection, i) => (
                   <div key={i}>
                     <h3>{subsection.title}:</h3>
-                    <ItemList>
+                    <p>
                       {subsection.itemList.map((item, i) => (
                         <Item key={i}>'{item}'</Item>
                       ))}
-                    </ItemList>
+                    </p>
                   </div>
                 ))}
               </section>

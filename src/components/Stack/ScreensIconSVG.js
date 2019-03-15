@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
 
-const StyledScreensIcon = styled.svg`
-  height: 80px;
+const Container = styled.svg`
   .color-contrast-stroke {
     stroke: var(--color-contrast, #2b2b2b);
   }
@@ -17,18 +16,14 @@ const StyledScreensIcon = styled.svg`
     fill: var(--color-bg-primary, #2b2b2b);
   }
 
-  #screen-mobile-lines {
-    will-change: transform;
-    transform: translateY(var(--ty-screens));
-  }
-
+  #screen-mobile-lines,
   #screen-desktop-lines {
     will-change: transform;
     transform: translateY(var(--ty-screens));
   }
 `
 
-const ScreensIconSVG = ({ height }) => {
+const ScreensIconSVG = () => {
   const config = {
     from: 'top-bottom',
     to: 'bottom-top',
@@ -41,11 +36,11 @@ const ScreensIconSVG = ({ height }) => {
   }
 
   return (
-    <StyledScreensIcon
-      viewBox='0 0 400 400'
-      version='1.1'
-      xmlns='http://www.w3.org/2000/svg'
-      xlinkHref='http://www.w3.org/1999/xlink'
+    <Container
+      viewBox={'0 0 400 400'}
+      version={'1.1'}
+      xmlns={'http://www.w3.org/2000/svg'}
+      xlinkHref={'http://www.w3.org/1999/xlink'}
     >
       <defs>
         <rect id='path-1' x='16' y='14' width='320' height='220' rx='20' />
@@ -180,7 +175,7 @@ const ScreensIconSVG = ({ height }) => {
           </g>
         </g>
       </g>
-    </StyledScreensIcon>
+    </Container>
   )
 }
 
