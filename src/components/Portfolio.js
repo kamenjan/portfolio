@@ -8,14 +8,13 @@ import { media, size } from '../defines/media'
 import styled from 'styled-components'
 
 import Header from './Header/Header'
-
 import About from './About/About'
 
 import Stack from './Stack/Stack'
 import GearsIconSVG from './Stack/GearsIconSVG'
 import ScreensIconSVG from './Stack/ScreensIconSVG'
 
-import JSDoc from './JSDoc' // Container For Work & Community subsections
+import JSDoc from './JSDoc'
 
 import ParallaxDivider from './ParallaxDivider/ParallaxDivider'
 import Desk from './ParallaxDivider/Desk/Desk'
@@ -44,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
       --color-tertiary: ${props =>
         props.theme === 'light' ? '#cc7832' : '#cc7832'};               
     }
+    height: 100%;
     box-sizing: border-box;
     body {
       background-color: var(--color-bg-primary, #2b2b2b);
@@ -70,17 +70,7 @@ const GlobalStyle = createGlobalStyle`
     list-style-type: none;
   }
 `
-const DocsContainer = styled.div`
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  & > * {
-    @media ${media.MD} {
-      width: 50%;
-    }
-  }
-`
+// const AboveTheFold = styled.div``
 const SiteSection = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -100,6 +90,10 @@ const SiteSection = styled.div`
 `
 const Heading = styled.h1`
   width: 100%;
+  //margin-top: 48px;
+  margin-bottom: 38px;
+  font-size: 30px;
+
   text-align: center;
   color: var(--color-tertiary, #2b2b2b);
   &:before {
@@ -109,6 +103,34 @@ const Heading = styled.h1`
   &:after {
     color: var(--color-primary, #2b2b2b);
     content: '$';
+  }
+  @media ${media.SM} {
+    margin-top: 48px;
+    font-size: 34px;
+  }
+  @media ${media.MD} {
+    margin-top: 48px;
+    font-size: 36px;
+  }
+  @media ${media.LG} {
+    margin-top: 48px;
+    margin-bottom: 62px;
+    font-size: 38px;
+  }
+  @media ${media.XL} {
+    margin-top: 48px;
+    font-size: 40px;
+  }
+`
+const DocsContainer = styled.div`
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  & > * {
+    @media ${media.MD} {
+      width: 50%;
+    }
   }
 `
 
@@ -376,7 +398,6 @@ const techStack = [
 
 const Portfolio = () => {
   const [theme, setTheme] = useState('dark')
-
   const menuProps = {
     itemHeight: 42,
     items: [

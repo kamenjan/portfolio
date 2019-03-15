@@ -1,23 +1,18 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 
 import { media } from '../../defines/media'
 
-// Header container CSS
 const Container = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
 
-  p:first-child:before {
-    content: '/** ';
-  }
-
   p {
-    margin-top: 24px;
-    margin-bottom: 24px;
-    padding: 0 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 0 18px;
 
     color: var(--color-contrast, #2b2b2b);
     font-size: 14px;
@@ -35,31 +30,58 @@ const Container = styled.div`
       font-size: 22px;
     }
   }
-
-  p:last-child:after {
-    content: ' */';
+  p:first-child {
+    margin-top: 40px;
+    &:before {
+      content: '/** ';
+    }
+  }
+  p:last-child {
+    margin-bottom: 40px;
+    &:after {
+      content: ' */';
+    }
   }
 `
 
-const About = props => {
+const aboutParagraphs = [
+  <>
+    I'm an allround web developer based{' '}
+    <a href={'https://en.wikipedia.org/wiki/Ljubljana'}>@Ljubljana</a>. I enjoy
+    building web applications and solving programming challenges while having
+    lots of fun in a chaotic world of JavaScript.
+  </>,
+  ` I have a strong passion for learning new things and working in teams with experienced developers.`,
+  `When I'm not building web or solving puzzles on coding sites I like to play strategic and fantasy board games.`,
+]
+
+const About = () => {
+  const aboutContainerRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const aboutContainer = aboutContainerRef.current
+    const viewportHeight = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0,
+    )
+    const aboutHeight = aboutContainer.clientHeight
+    const offsetTop = aboutContainer.offsetTop
+    const offsetBottom = viewportHeight - (offsetTop + aboutHeight)
+    const validMargin = ((offsetTop + aboutHeight) / 100) * 20
+
+    if (offsetBottom > 0 && offsetBottom < validMargin) {
+      const newPadding = (offsetBottom - 40) / 2
+      aboutContainer.style.padding = `${newPadding}px 0`
+    }
+  }, [])
+
   return (
-    <Container>
-      <p>
-        I'm an allround web developer based{' '}
-        <a href={'https://en.wikipedia.org/wiki/Ljubljana'}>@Ljubljana</a>. I
-        enjoy building web applications and solving programming challenges while
-        having lots of fun in a chaotic world of JavaScript.
-      </p>
-      <p>
-        I have a strong passion for learning new things and working in teams
-        with experienced developers.
-      </p>
-      <p>
-        When I'm not building web or solving puzzles on coding sites I like to
-        play strategic and fantasy board games.
-      </p>
+    <Container ref={aboutContainerRef}>
+      {aboutParagraphs.map((paragraph, i) => (
+        <p key={i}>{paragraph}</p>
+      ))}
     </Container>
   )
 }
 
-export default About
+export default React.memo(About)

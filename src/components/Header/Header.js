@@ -115,7 +115,6 @@ const Content = styled.div`
   margin-left: 34px;
   font-size: 15px;
   line-height: 1.4em;
-  color: grey;
 
   @media ${media.SM} {
     margin-top: 22px;
@@ -149,23 +148,31 @@ const headerInfo = {
     {
       docTag: 'name',
       type: 'paragraph',
-      content: 'Rok Arih',
+      content: <span style={{ color: `var(--color-tertiary)` }}>Rok Arih</span>,
     },
     {
       docTag: 'desc',
       type: 'paragraph',
-      content: 'Web Developer',
+      content: (
+        <span style={{ color: `var(--color-tertiary)` }}>Web Developer</span>
+      ),
     },
     {
       docTag: 'version',
       type: 'paragraph',
       lineBreakAfter: true,
-      content: '3.2.11',
+      content: (
+        <span style={{ color: `var(--color-tertiary, #cc7832)` }}>3.2.11</span>
+      ),
     },
     {
       docTag: 'link',
       type: 'array',
-      content: ['mail', 'github', 'linkedin'],
+      content: [
+        <a href={'mail'}>mail</a>,
+        <a href={'github'}>github</a>,
+        <a href={'linkedin'}>linkedin</a>,
+      ],
     },
   ],
 }
