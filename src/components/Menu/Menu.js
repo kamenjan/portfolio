@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import ThemeContext from '../../context/theme'
-import { media, size } from '../../defines/media'
+import { media, size } from '../../utils/media'
 import MenuItem from './MenuItem'
-import burgerIcon from '../../static/burger.png'
-import ToggleIcon from '../svg/ToggleIconSVG'
-import InfoIcon from '../svg/InfoIconSVG'
+
+import { HamburgerCollapse } from 'react-animated-burgers'
+
+import ToggleIcon from '../Svgs/ToggleIconSVG'
+import InfoIcon from '../Svgs/InfoIconSVG'
 
 import { Link } from 'react-scroll'
 
@@ -52,12 +54,13 @@ const Container = styled.div`
     }
   }
 
-
-  #status-bar-burger {
+  .status-bar-burger {
     position: fixed;
     top: 8px;
     right: 8px;
-    height: 34px;
+    span, span:after, span:before {
+      background-color: var(--color-contrast);
+    }
     @media ${media.MD} {
       display: none;
     }
@@ -73,10 +76,7 @@ const Container = styled.div`
     }
     @media ${media.LG} {
       max-width: ${`${size.LG}px`};
-    }
-    @media ${media.XL} {
-      max-width: ${`${size.XL}px`};
-    }            
+    }          
   }
 `
 
@@ -96,11 +96,11 @@ const Menu = props => {
       menuHeight={menuHeight}
       itemHeight={props.itemHeight}
     >
-      <img
-        id={'status-bar-burger'}
-        onClick={() => setMenuOpened(!menuOpened)}
-        src={burgerIcon}
-        alt={''}
+      <HamburgerCollapse
+        className={'status-bar-burger'}
+        // buttonWidth={50}
+        isActive={menuOpened}
+        toggleButton={() => setMenuOpened(!menuOpened)}
       />
       <div id='status-bar-container'>
         {props.items.map((item, i) => (
@@ -137,4 +137,4 @@ const Menu = props => {
   )
 }
 
-export default Menu
+export default React.memo(Menu)

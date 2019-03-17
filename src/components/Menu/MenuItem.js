@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import { media } from '../../defines/media'
+import { media } from '../../utils/media'
 
 const Container = styled.div`
   font-size: 16px;
@@ -62,4 +62,4 @@ MenuItem.propTypes = {
   value: PropTypes.string.isRequired,
 }
 
-export default MenuItem
+export default React.memo(MenuItem)

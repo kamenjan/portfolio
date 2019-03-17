@@ -4,7 +4,7 @@ import ThemeContext from '../../context/theme'
 
 import styled from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
-import { media } from '../../defines/media'
+import { media } from '../../utils/media'
 
 import headerBgImageXSdark from './static/bg-header-xs-dark.jpg'
 import headerBgImageSMdark from './static/bg-header-sm-dark.jpg'
@@ -12,7 +12,7 @@ import headerBgImageMDdark from './static/bg-header-md-dark.jpg'
 import headerBgImageLGdark from './static/bg-header-lg-dark.jpg'
 import headerBgImageXLdark from './static/bg-header-xl-dark.jpg'
 
-import JSDoc from '../JSDoc'
+import JSDoc from '../JSDoc/JSDoc'
 
 const bgImages = {
   XS: headerBgImageXSdark,
@@ -43,7 +43,7 @@ const Container = styled.div`
       top: -40px;
       content: ${`url(${bgImages.XS})`};
       filter: ${({ theme }) =>
-        `brightness(${theme === 'light' ? '350' : '100'}%)`};
+        `brightness(${theme === 'light' ? '370' : '100'}%)`};
     }
   }
 
@@ -116,6 +116,10 @@ const Content = styled.div`
   font-size: 15px;
   line-height: 1.4em;
 
+  span:after {
+    color: var(--color-tertiary);
+  }
+
   @media ${media.SM} {
     margin-top: 22px;
     margin-left: 98px;
@@ -130,6 +134,9 @@ const Content = styled.div`
     margin-top: 38px;
     margin-left: 160px;
     font-size: 26px;
+    section {
+      font-size: 26px;
+    }
   }
   @media ${media.XL} {
     margin-top: 38px;
@@ -143,41 +150,7 @@ const Content = styled.div`
   }
 `
 
-const headerInfo = {
-  docSections: [
-    {
-      docTag: 'name',
-      type: 'paragraph',
-      content: <span style={{ color: `var(--color-tertiary)` }}>Rok Arih</span>,
-    },
-    {
-      docTag: 'desc',
-      type: 'paragraph',
-      content: (
-        <span style={{ color: `var(--color-tertiary)` }}>Web Developer</span>
-      ),
-    },
-    {
-      docTag: 'version',
-      type: 'paragraph',
-      lineBreakAfter: true,
-      content: (
-        <span style={{ color: `var(--color-tertiary, #cc7832)` }}>3.2.11</span>
-      ),
-    },
-    {
-      docTag: 'link',
-      type: 'array',
-      content: [
-        <a href={'mail'}>mail</a>,
-        <a href={'github'}>github</a>,
-        <a href={'linkedin'}>linkedin</a>,
-      ],
-    },
-  ],
-}
-
-const Header = ({ headerContent, name }) => {
+const Header = ({ headerData, name }) => {
   // Theme context
   const { theme } = useContext(ThemeContext)
   // BasicScroll config
@@ -198,7 +171,7 @@ const Header = ({ headerContent, name }) => {
         <div>
           <img alt={''} />
           <Content>
-            <JSDoc docSections={headerInfo.docSections} />
+            <JSDoc docSections={headerData.docSections} />
           </Content>
         </div>
       </ReactBasicScroll>
@@ -206,4 +179,4 @@ const Header = ({ headerContent, name }) => {
   )
 }
 
-export default Header
+export default React.memo(Header)

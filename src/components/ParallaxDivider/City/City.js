@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
 
-import { media } from '../../../defines/media'
+import { media } from '../../../utils/media'
 import ThemeContext from '../../../context/theme'
 
 import cityBgImageXSdark from './static/bg-city-xs-dark.jpg'
@@ -24,37 +24,37 @@ const Container = styled.img`
   z-index: -10;
   width: 600px;
   height: 380px;
-  top: -90px;
+  top: -170px;
 
   content: ${`url(${bgImages.XS})`};
   filter: ${({ theme }) => `brightness(${theme === 'light' ? '350' : '100'}%)`};
 
   will-change: transform;
-  transform: translateY(var(--ty-img));
+  transform: translateY(var(--ty-img-city));
 
   @media ${media.SM} {
     content: ${`url(${bgImages.SM})`};
     width: 900px;
     height: 565px;
-    top: -140px;
+    top: -240px;
   }
   @media ${media.MD} {
     content: ${`url(${bgImages.MD})`};
     width: 1200px;
     height: 753px;
-    top: -180px;
+    top: -340px;
   }
   @media ${media.LG} {
     content: ${`url(${bgImages.LG})`};
     width: 1900px;
     height: 1192px;
-    top: -260px;
+    top: -480px;
   }
   @media ${media.XL} {
     content: ${`url(${bgImages.XL})`};
     width: 2800px;
     height: 1756px;
-    top: -1080px;
+    top: -680px;
   }
 `
 
@@ -65,9 +65,9 @@ const City = () => {
     from: '0',
     to: 'bottom-top',
     props: {
-      '--ty-img': {
+      '--ty-img-city': {
         from: 0,
-        to: '30%',
+        to: '40%',
       },
     },
   }
@@ -79,4 +79,4 @@ const City = () => {
   )
 }
 
-export default City
+export default React.memo(City)

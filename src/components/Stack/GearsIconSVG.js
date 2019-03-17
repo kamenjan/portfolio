@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import * as svgjs from 'svg.js'
 import { ReactBasicScroll } from 'react-basic-scroll'
@@ -110,4 +110,4 @@ const GearsIconSVG = props => {
   )
 }
 
-export default GearsIconSVG
+export default React.memo(GearsIconSVG)

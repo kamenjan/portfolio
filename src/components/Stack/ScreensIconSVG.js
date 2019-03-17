@@ -179,4 +179,4 @@ const ScreensIconSVG = () => {
   )
 }
 
-export default ScreensIconSVG
+export default React.memo(ScreensIconSVG)

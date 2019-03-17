@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../defines/media'
+import { media } from '../../utils/media'
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +26,9 @@ const Container = styled.div`
     margin-top: 20px;
     margin-bottom: 4px;
     font-size: 14px;
+    &:after {
+      content: ':';
+    }
   }
   p {
     font-size: 13px;
@@ -67,9 +70,6 @@ const Container = styled.div`
     }
   }
   @media ${media.LG} {
-    svg {
-      height: 140px;
-    }
     h2 {
       font-size: 24px;
     }
@@ -81,9 +81,6 @@ const Container = styled.div`
     }
   }
   @media ${media.XL} {
-    svg {
-      height: 160px;
-    }
     h2 {
       font-size: 26px;
     }
@@ -104,12 +101,17 @@ const StackGroup = styled.div`
 `
 const Item = styled.span`
   color: var(--color-secondary, '#a9b7c6');
+  &:before {
+    content: "'";
+    color: var(--color-tertiary, '#a9b7c6');
+  }
   &:after {
-    content: ', ';
+    content: "', ";
     color: var(--color-tertiary, '#a9b7c6');
   }
   &:last-child:after {
-    display: none;
+    //display: none;
+    content: "'";
   }
 `
 
@@ -126,10 +128,10 @@ const Stack = props => {
                 <h2>{section.title}</h2>
                 {section.subsections.map((subsection, i) => (
                   <div key={i}>
-                    <h3>{subsection.title}:</h3>
+                    <h3>{subsection.title}</h3>
                     <p>
                       {subsection.itemList.map((item, i) => (
-                        <Item key={i}>'{item}'</Item>
+                        <Item key={i}>{item}</Item>
                       ))}
                     </p>
                   </div>
@@ -143,4 +145,4 @@ const Stack = props => {
   )
 }
 
-export default Stack
+export default React.memo(Stack)

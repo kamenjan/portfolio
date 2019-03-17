@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ReactBasicScroll } from 'react-basic-scroll'
 
-import { media } from '../../../defines/media'
+import { media } from '../../../utils/media'
 import ThemeContext from '../../../context/theme'
 
 import deskBgImageXSdark from './static/bg-desk-xs-dark.jpg'
@@ -30,7 +30,8 @@ const Container = styled.img`
   filter: ${({ theme }) => `brightness(${theme === 'light' ? '350' : '100'}%)`};
 
   will-change: transform;
-  transform: translateY(var(--ty-img));
+  transform: translateY(var(--ty-img-desk));
+
   @media ${media.SM} {
     content: ${`url(${bgImages.SM})`};
     width: 820px;
@@ -64,9 +65,9 @@ const Desk = () => {
     from: '0',
     to: 'bottom-top',
     props: {
-      '--ty-img': {
+      '--ty-img-desk': {
         from: 0,
-        to: '30%',
+        to: '40%',
       },
     },
   }
@@ -78,4 +79,4 @@ const Desk = () => {
   )
 }
 
-export default Desk
+export default React.memo(Desk)

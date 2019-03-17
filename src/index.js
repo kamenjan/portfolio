@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 
 import * as serviceWorker from './serviceWorker'
 
-// import './index.css'
-
 import AppContainer from './containers/AppContainer'
 
 ReactDOM.render(<AppContainer />, document.getElementById('root'))

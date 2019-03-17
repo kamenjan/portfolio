@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../defines/media'
+import { media } from '../../utils/media'
 
 const Container = styled.div`
   height: 220px;
@@ -24,4 +24,4 @@ const Container = styled.div`
 
 const ParallaxDivider = props => <Container>{props.children}</Container>
 
-export default ParallaxDivider
+export default React.memo(ParallaxDivider)
