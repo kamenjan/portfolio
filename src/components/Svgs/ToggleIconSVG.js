@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import ThemeContext from '../../context/theme'
 
 const Container = styled.svg`
   height: ${props => props.height || '28px'};
@@ -18,6 +19,7 @@ const Container = styled.svg`
 `
 
 const ToggleIconSVG = props => {
+  const { theme } = useContext(ThemeContext)
   return (
     <Container
       viewBox='0 0 400 400'
@@ -46,9 +48,7 @@ const ToggleIconSVG = props => {
         <circle
           id='Oval'
           className={
-            props.theme === 'dark'
-              ? 'color-background-fill'
-              : 'color-contrast-fill'
+            theme === 'dark' ? 'color-background-fill' : 'color-contrast-fill'
           }
           cx='113.5'
           cy='200.5'
@@ -57,9 +57,7 @@ const ToggleIconSVG = props => {
         <circle
           id='Oval-Copy'
           className={
-            props.theme === 'light'
-              ? 'color-background-fill'
-              : 'color-contrast-fill'
+            theme === 'light' ? 'color-background-fill' : 'color-contrast-fill'
           }
           cx='286.5'
           cy='200.5'

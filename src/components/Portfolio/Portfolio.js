@@ -143,7 +143,7 @@ const Portfolio = () => {
       <ParallaxDivider>
         <City />
       </ParallaxDivider>
-      <Menu {...navMenuData} />
+      <Menu navMenuData={navMenuData} />
     </ThemeContext.Provider>
   )
 }

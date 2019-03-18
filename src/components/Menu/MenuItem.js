@@ -1,25 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Link } from 'react-scroll'
+
 import styled from 'styled-components'
 import { media } from '../../utils/media'
 
 const Container = styled.div`
-  font-size: 16px;
-  padding: 0 12px;
-  height: ${props => `${props.height}px`};
   display: flex;
   align-items: center;
-  border-top: 1px solid #676767;
 
   @media ${media.MD} {
     margin-left: ${props => props.floatRight && 'auto'};
     border-top: none;
-  }
-
-  &:hover {
-    background-color: var(--color-bg-primary, #2b2b2b);
-    cursor: pointer;
   }
 
   svg {
@@ -29,6 +22,7 @@ const Container = styled.div`
 
 const Shortcut = styled.span`
   text-decoration: underline;
+  display: none;
 
   &:after {
     content: ':';
@@ -36,29 +30,38 @@ const Shortcut = styled.span`
     display: inline-block;
     white-space: pre;
   }
+
+  @media ${media.MD} {
+    display: inline-block;
+  }
 `
 
 const DisplayValue = styled.span``
 
-const MenuItem = props => {
-  const Icon = props.icon ? props.icon : null
-  const iconHeight = props.height - 20
+const MenuItem = ({ icon, onClick, floatRight, scrollTo, shortcut, value }) => {
+  const Icon = icon ? icon : null
   return (
-    <Container {...props}>
-      <Icon height={iconHeight} theme={props.theme} />
-      <Shortcut>{props.shortcut}</Shortcut>
-      <DisplayValue>{props.value}</DisplayValue>
+    <Container onClick={onClick} floatRight={floatRight}>
+      {scrollTo ? (
+        <Link to={scrollTo} smooth={true} duration={1200}>
+          <Icon />
+          <Shortcut>{shortcut}</Shortcut>
+          <DisplayValue>{value}</DisplayValue>
+        </Link>
+      ) : (
+        <a>
+          <Icon />
+          <Shortcut>{shortcut}</Shortcut>
+          <DisplayValue>{value}</DisplayValue>
+        </a>
+      )}
     </Container>
   )
 }
 
 MenuItem.propTypes = {
-  height: PropTypes.number,
-  icon: PropTypes.func,
-  onClick: PropTypes.func,
-  scrollTo: PropTypes.string,
+  icon: PropTypes.object,
   shortcut: PropTypes.number,
-  theme: PropTypes.string,
   value: PropTypes.string.isRequired,
 }
 

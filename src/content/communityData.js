@@ -25,13 +25,17 @@ const communityData = [
         docTag: 'role',
         type: 'array',
         lineBreakAfter: true,
-        content: ['organizer', 'developer'],
+        content: [
+          <span style={{ color: `var(--color-tertiary)` }}>organizer</span>,
+          <span style={{ color: `var(--color-tertiary)` }}>developer</span>,
+        ],
       },
       {
         docTag: 'description',
         type: 'paragraph',
+        lineBreakAfter: true,
         content:
-          'Sprint was focused on improving the Pyramid framework by debugging, upgrading existing features and implementing new ones. I did some frontend tweaks but mostly helped with organization.',
+          'Sprint was focused on improving the Pyramid framework by debugging, upgrading existing features and implementing new ones. The sprinters shared the results of the sprint among the local Python community, as well as experiences on how to built software on top of Pyramid. I contributed some frontend tweaks for Pyramid quick start tutorial but mostly helped with organization.',
       },
     ],
   },
@@ -57,13 +61,18 @@ const communityData = [
         docTag: 'role',
         type: 'array',
         lineBreakAfter: true,
-        content: ['organizer', 'co-host', 'speaker'],
+        content: [
+          <span style={{ color: `var(--color-tertiary)` }}>organizer</span>,
+          <span style={{ color: `var(--color-tertiary)` }}>co-host</span>,
+          <span style={{ color: `var(--color-tertiary)` }}>speaker</span>,
+        ],
       },
       {
         docTag: 'description',
         type: 'paragraph',
+        lineBreakAfter: true,
         content:
-          'In November 2018 I\'ve organized and co-hosted the first React Meetup in Ljubljana. I also gave a talk titled "What can React library do for you". Meetup was a great success with over 50 attendees.',
+          'In November 2018 I\'ve organized and co-hosted the first React Meetup in Ljubljana. PovioLabs and Poligon helped me and supported the event by providing food and really nice location for the meetup. I also gave an intro talk titled "What can React library do for you". Response was amazing with over 50 attendees and some new friends.',
       },
     ],
   },

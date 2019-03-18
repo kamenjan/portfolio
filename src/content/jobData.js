@@ -71,6 +71,7 @@ const jobData = [
       {
         docTag: 'tags',
         type: 'array',
+        lineBreakAfter: true,
         content: [
           'javascript',
           'npm_scripts',
@@ -159,6 +160,7 @@ const jobData = [
       {
         docTag: 'tags',
         type: 'array',
+        lineBreakAfter: true,
         content: [
           'php',
           'apache',

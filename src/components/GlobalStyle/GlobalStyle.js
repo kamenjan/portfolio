@@ -17,7 +17,9 @@ const GlobalStyle = createGlobalStyle`
       --color-secondary: ${props =>
         props.theme === 'light' ? '#008000' : '#629755'};
       --color-tertiary: ${props =>
-        props.theme === 'light' ? '#cc7832' : '#cc7832'};               
+        props.theme === 'light' ? '#cc7832' : '#cc7832'};      
+      --color-link: ${props =>
+        props.theme === 'light' ? '#287bde' : '#287bde'};                
     }
     height: 100%;
     box-sizing: border-box;
@@ -25,10 +27,10 @@ const GlobalStyle = createGlobalStyle`
       background-color: var(--color-bg-primary, #2b2b2b);
       font-family: 'Lucida Console', Monaco, monospace;
       a {
-        color: #287bde;
+        color: var(--color-link, #287bde);
         text-decoration: none;
         &:hover {
-          color: #0f00ba;
+          color: var(--color-link, #0f00ba);
           text-decoration: underline;
         }
         &:visited {
