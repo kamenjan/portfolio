@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "d2842e1a353fc806bd8c",
-    "url": "/portfolio/static/js/main.27dcc2cf.chunk.js"
+    "revision": "703bd3e07b10b4fdaea4",
+    "url": "/portfolio/static/js/main.9a3614a7.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
     "url": "/portfolio/static/js/runtime~main.f308c8e6.js"
   },
   {
-    "revision": "e8d8f9013eccbc0c9b25",
+    "revision": "6af3b0c7991adaa8ff8a",
     "url": "/portfolio/static/css/2.8b49865a.chunk.css"
   },
   {
-    "revision": "e8d8f9013eccbc0c9b25",
-    "url": "/portfolio/static/js/2.5b42bdb1.chunk.js"
+    "revision": "6af3b0c7991adaa8ff8a",
+    "url": "/portfolio/static/js/2.7011c8c2.chunk.js"
   },
   {
     "revision": "39e2e00b4d1a7478557dc043913f31c6",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/bg-city-xl-dark.d5a3fdc7.jpg"
   },
   {
-    "revision": "16bd955f10f91091426f63cb57ab24e2",
+    "revision": "346a6e998871100f95ed83ced430abdb",
     "url": "/portfolio/index.html"
   }
 ];
