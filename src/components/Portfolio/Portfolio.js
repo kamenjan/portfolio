@@ -6,7 +6,7 @@ import ThemeContext from '../../context/theme'
 import {
   headerData,
   aboutData,
-  navMenuData,
+  menuItems,
   stackData,
   jobData,
   communityData,
@@ -29,6 +29,10 @@ const SiteSection = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 360px;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+
   @media ${media.SM} {
     max-width: ${`${size.SM}px`};
   }
@@ -41,6 +45,7 @@ const SiteSection = styled.div`
 `
 const Heading = styled.h1`
   width: 100%;
+  margin-top: 0;
   margin-bottom: 38px;
   font-size: 30px;
 
@@ -55,20 +60,20 @@ const Heading = styled.h1`
     content: '$';
   }
   @media ${media.SM} {
-    margin-top: 48px;
+    //margin-top: 48px;
     font-size: 34px;
   }
   @media ${media.MD} {
-    margin-top: 48px;
+    //margin-top: 48px;
     font-size: 36px;
   }
   @media ${media.LG} {
-    margin-top: 48px;
+    //margin-top: 48px;
     margin-bottom: 62px;
     font-size: 38px;
   }
   @media ${media.XL} {
-    margin-top: 48px;
+    //margin-top: 48px;
     font-size: 40px;
   }
 `
@@ -143,7 +148,7 @@ const Portfolio = () => {
       <ParallaxDivider>
         <City />
       </ParallaxDivider>
-      <Menu navMenuData={navMenuData} />
+      <Menu menuItems={menuItems} />
     </ThemeContext.Provider>
   )
 }

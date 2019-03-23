@@ -42,8 +42,6 @@ const Container = styled.div`
       height: 330px;
       top: -40px;
       content: ${`url(${bgImages.XS})`};
-      filter: ${({ theme }) =>
-        `brightness(${theme === 'light' ? '370' : '100'}%)`};
     }
   }
 

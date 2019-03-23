@@ -1,6 +1,6 @@
 export { default as headerData } from './headerData'
 export { default as aboutData } from './aboutData'
-export { default as navMenuData } from './navMenuData'
+export { default as menuItems } from './menuItems'
 export { default as stackData } from './stackData'
 export { default as jobData } from './jobData'
 export { default as communityData } from './communityData'

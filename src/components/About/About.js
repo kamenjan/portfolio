@@ -31,13 +31,13 @@ const Container = styled.div`
     }
   }
   p:first-child {
-    margin-top: 40px;
+    //margin-top: 40px;
     &:before {
       content: '/** ';
     }
   }
   p:last-child {
-    margin-bottom: 40px;
+    //margin-bottom: 40px;
     &:after {
       content: ' */';
     }

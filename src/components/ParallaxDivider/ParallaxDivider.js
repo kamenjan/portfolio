@@ -8,6 +8,8 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+
+  //margin: 42px 0;
   @media ${media.SM} {
     height: 270px;
   }

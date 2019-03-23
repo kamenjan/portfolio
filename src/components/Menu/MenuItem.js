@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { Link } from 'react-scroll'
+import { Link, scroller } from 'react-scroll'
 
 import styled from 'styled-components'
 import { media } from '../../utils/media'
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
+  //display: none;
+  //align-items: center;
 
   @media ${media.MD} {
-    margin-left: ${props => props.floatRight && 'auto'};
     border-top: none;
   }
 
@@ -38,10 +37,26 @@ const Shortcut = styled.span`
 
 const DisplayValue = styled.span``
 
-const MenuItem = ({ icon, onClick, floatRight, scrollTo, shortcut, value }) => {
+const MenuItem = ({
+  icon,
+  onClick,
+  scrollTo,
+  shortcut,
+  value,
+  keyPressed,
+  action,
+}) => {
   const Icon = icon ? icon : null
+
+  useEffect(() => {
+    if (Number(keyPressed) === shortcut) {
+      scrollTo && scroller.scrollTo(scrollTo, { smooth: true, duration: 1200 })
+      action()
+    }
+  }, [keyPressed])
+
   return (
-    <Container onClick={onClick} floatRight={floatRight}>
+    <Container onClick={action}>
       {scrollTo ? (
         <Link to={scrollTo} smooth={true} duration={1200}>
           <Icon />

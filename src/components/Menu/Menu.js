@@ -1,35 +1,50 @@
-import React, { useContext, useState, useEffect } from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 
-import ThemeContext from '../../context/theme'
-
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import styled from 'styled-components'
 import { media, size } from '../../utils/media'
 
 import MenuItem from './MenuItem'
 import { HamburgerCollapse } from 'react-animated-burgers'
 
-const toggleMenu = keyframes`
-  from {
-    transform: translateY(0);
+const Container = styled.div`
+  position: initial;
+  background-color: var(--color-bg-menu);
+  color: var(--color-contrast);
+  a {
+    color: var(--color-contrast);
+    text-decoration: none;
+    &:hover {
+      color: var(--color-contrast);
+      background-color: var(--color-bg-primary, #2b2b2b);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    &:visited {
+      color: var(--color-contrast);
+    }
   }
 
-  to {
-    transform: translateY(600px);
-  }
-  100% {
-    background: orange;
+  @media ${media.MD} {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 40px;
   }
 `
-
-const Container = styled.div`
+const MobileMenu = styled.div`
   --item-height-mobile: 72px;
   --menu-height-mobile: calc(var(--item-height-mobile) * 6);
-  --menu-height-desktop: 38px;
+  --animation-duration: ${props => props.timeout || '1000ms'}
+
+  display: flex;
+  flex-flow: column;
 
   position: fixed;
   right: 0;
-  bottom: ${props =>
-    props.menuOpened ? `calc(100% - var(--menu-height-mobile))` : '100%'};
+  top: 0;
 
   width: 280px;
   height: var(--menu-height-mobile);
@@ -40,144 +55,149 @@ const Container = styled.div`
   border-left: 1px solid #676767;
   border-bottom: 1px solid #676767;
 
-  transition: bottom 0.8s ease-in-out;
-  //animation-name: ${toggleMenu};
-  //animation-duration: 0.4s;
-  //animation-fill-mode: forwards;
-  //animation-timing-function: ease-in;
+  &.menu-enter {
+    //transform: translateY(0);
+    transform: translateY(calc(var(--item-height-mobile) * -6));
+  }
+
+  &.menu-enter-active {
+    //transform: translateY(calc(var(--item-height-mobile) * 6));
+    transform: translateY(0);
+    transition: all var(--animation-duration);
+  }
+
+  &.menu-enter-done {
+    //transform: translateY(calc(var(--item-height-mobile) * 6));
+    transform: translateY(0);
+  }
+
+  &.menu-exit {
+    //transform: translateY(calc(var(--item-height-mobile) * 6));
+    transform: translateY(0);
+  }
+
+  &.menu-exit-active {
+    //transform: translateY(0);
+    transform: translateY(calc(var(--item-height-mobile) * -6));
+    transition: all var(--animation-duration);
+  }
+  
+  a {
+    height: var(--item-height-mobile);
+    width: 100%;
+    font-size: 22px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--color-bg-primary, #2b2b2b);
+      cursor: pointer;
+    }
+  }
+
+`
+const DesktopMenu = styled.div`
+  --menu-height-desktop: 38px;
+
+  max-width: ${`${size.MD}px`};
+  display: flex;
+  flex-flow: row;
+  margin-left: auto;
+  margin-right: auto;
+
+  div:nth-child(5) {
+    margin-left: auto;
+  }
 
   a {
-    color: var(--color-contrast);
-    text-decoration: none;
-    &:hover {
-      color: var(--color-contrast);
-      text-decoration: none;
-    }
-    &:visited {
-      color: var(--color-contrast);
-    }
-  }
-
-  .status-bar-burger {
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    span,
-    span:after,
-    span:before {
-      background-color: var(--color-contrast);
-    }
-    outline: none;
-  }
-
-  #status-bar-container {
     display: flex;
-    flex-flow: column;
-
-    a {
-      height: var(--item-height-mobile);
-      width: 100%;
-      font-size: 22px;
-      padding: 0 12px;
-      display: flex;
-      align-items: center;
-
-      &:hover {
-        background-color: var(--color-bg-primary, #2b2b2b);
-        cursor: pointer;
-      }
-    }
-    
-    div:not(:first-child) > a {
-      border-top: 1px solid #676767;
-    }
-
-    @media ${media.MD} {
-      max-width: ${`${size.MD}px`};
-      margin-left: auto;
-      margin-right: auto;
-      flex-flow: row;
-      a {
-        height: var(--menu-height-desktop);
-        border-top: none;
-        font-size: 16px;
-      }
-      div:not(:first-child) > a {
-        border-top: none;
-      }
-    }
-    @media ${media.LG} {
-      max-width: ${`${size.LG}px`};
-    }
+    height: var(--menu-height-desktop);
+    padding: 0 12px;
+    border-top: none;
+    font-size: 16px;
+    align-items: center;
   }
 
-  @media ${media.MD} {
-    right: inherit;
-    left: 0;
-    top: calc(100% - var(--menu-height-desktop));
-    width: 100%;
-    height: var(--menu-height-desktop);
-    padding-top: 0;
-
-    border-top: 1px solid #676767;
-    border-left: none;
-    border-bottom: none;
-    .status-bar-burger {
-      display: none;
-    }
+  @media ${media.LG} {
+    max-width: ${`${size.LG}px`};
   }
 `
+const MenuBurger = styled(HamburgerCollapse)`
+  position: fixed;
+  z-index: 100;
+  top: 8px;
+  right: 8px;
+`
 
-const Menu = ({ navMenuData }) => {
-  // Set  menu state
+const Menu = ({ menuItems }) => {
+  // Set menu state and state handlers
   const [menuOpened, setMenuOpened] = useState(false)
+  const closeMenu = () => menuOpened && setMenuOpened(false)
+  const closeMenuEvents = ['focusout', 'scroll']
 
-  // Calculate mobile menu height based on menu item number and height
-  const menuItemCount = navMenuData.length
+  const [mobile, setMobile] = useState(false)
+  const onResize = event => {
+    const width = event.target.innerWidth
+    width > size.MD && setMenuOpened(false)
+    setMobile(width < size.MD)
+  }
 
-  const { theme, setTheme } = useContext(ThemeContext)
+  const animationTimeout = 400
 
-  const uiCloseMenuEvents = ['focusout', 'scroll']
+  const menuItemsContainer = menuItems.map(
+    ({ value, icon, scrollTo, toggleTheme }, i) => {
+      return (
+        <MenuItem
+          key={i}
+          value={value}
+          icon={icon}
+          shortcut={i + 1}
+          scrollTo={scrollTo}
+        />
+      )
+    },
+  )
 
   useEffect(() => {
-    uiCloseMenuEvents.map(event =>
-      document.addEventListener(event, () => setMenuOpened(false)),
+    const viewportWidth = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0,
     )
-    return () => {
-      uiCloseMenuEvents.map(event =>
-        document.removeEventListener(event, () => setMenuOpened(false)),
-      )
-    }
+    setMobile(viewportWidth < size.MD)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  useEffect(() => {
+    menuOpened && // if menu was opened add listeners for close menu events
+      closeMenuEvents.map(e => document.addEventListener(e, closeMenu))
+    return () => {
+      closeMenuEvents.map(e => document.removeEventListener(e, closeMenu))
+    }
+  }, [menuOpened])
+
   return (
-    <Container menuOpened={menuOpened} itemCount={menuItemCount} color={'red'}>
-      <HamburgerCollapse
-        className={'status-bar-burger'}
-        buttonWidth={40}
-        isActive={menuOpened}
-        toggleButton={() => setMenuOpened(!menuOpened)}
-      />
-      <div id={'status-bar-container'}>
-        {navMenuData.map(
-          ({ value, icon, scrollTo, floatRight, toggleTheme }, i) => {
-            return (
-              <MenuItem
-                key={i}
-                value={value}
-                icon={icon}
-                shortcut={i + 1}
-                scrollTo={scrollTo}
-                floatRight={floatRight}
-                onClick={() => {
-                  setMenuOpened(false)
-                  toggleTheme && setTheme(theme === 'dark' ? 'light' : 'dark')
-                }}
-              />
-            )
-          },
-        )}
-      </div>
+    <Container>
+      {mobile ? (
+        <>
+          <MenuBurger
+            isActive={menuOpened}
+            toggleButton={() => setMenuOpened(!menuOpened)}
+          />
+          <TransitionGroup component={null}>
+            {menuOpened && (
+              <CSSTransition classNames='menu' timeout={animationTimeout}>
+                <MobileMenu timeout={`${animationTimeout}ms`}>
+                  {menuItemsContainer}
+                </MobileMenu>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </>
+      ) : (
+        <DesktopMenu>{menuItemsContainer}</DesktopMenu>
+      )}
     </Container>
   )
 }
