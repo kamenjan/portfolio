@@ -111,6 +111,12 @@ Tools: babel, eslint, sass, hotreload, flexbox
 
 ## Issues, notes & todos
 
+### TODO:
+- define all styling constants
+- ~insert content~
+- type check all content
+- finalize mobile menu
+
 ### SVGs
 
 There is some funny stuff surrounding SVGs. It mostly has to do with outdated specs and discontinued development :(
@@ -164,13 +170,35 @@ https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-in
 
 Check which components get unnecessary re-renders and memoize them
 
+
 ### Nav bar scrolling
 
 https://scotch.io/tutorials/implementing-smooth-scrolling-in-react
+
 
 ### Deploy process 
 
 github pages deploy:
 
 https://medium.com/@_mariacheline/deploy-create-react-app-project-to-github-pages-2eb6deda5b89
+
+
+### Using macros for creating JSDoc comment block in WebStorm
+
+https://www.jetbrains.com/help/webstorm/creating-jsdoc-comments.html
+
+
+### Combining styled components and react transitions 
+
+https://stackoverflow.com/questions/42660907/using-reactcsstransitiongroup-with-styled-component
+
+
+### mobile url bar resizing and positioning
+
+https://developers.google.com/web/updates/2016/12/url-bar-resizing
+
+
+### proxying api request in cra development instance
+
+https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development
 
