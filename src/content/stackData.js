@@ -19,7 +19,7 @@ const stackData = [
           {
             title: 'libraries_&_frameworks',
             itemList: [
-              'Angular',
+              'React',
               'Redux',
               'Materail-UI',
               'Electron',

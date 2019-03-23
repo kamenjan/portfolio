@@ -35,7 +35,7 @@ const communityData = [
         type: 'paragraph',
         lineBreakAfter: true,
         content:
-          'Sprint was focused on improving the Pyramid framework by debugging, upgrading existing features and implementing new ones. The sprinters shared the results of the sprint among the local Python community, as well as experiences on how to built software on top of Pyramid. I contributed some frontend tweaks for Pyramid quick start tutorial but mostly helped with organization.',
+          'Sprint was focused on improving the Pyramid framework by debugging, upgrading existing features and implementing new ones. The sprinters shared the results of the sprint among the local Python community, as well as experiences on how to built software on top of Pyramid. I contributed minor frontend tweaks for Pyramid quick start tutorial but I mostly helped with organization.',
       },
     ],
   },

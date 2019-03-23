@@ -110,7 +110,7 @@ const jobData = [
         type: 'paragraph',
         lineBreakAfter: true,
         content:
-          'A company responsible for one of the most complete yacht management systems out there called DeepBlue Software.',
+          'The company responsible for one of the most complete yacht management systems out there called DeepBlue Software.',
       },
       {
         docTag: 'role',

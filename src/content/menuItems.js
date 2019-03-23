@@ -5,7 +5,7 @@ import CommunityIcon from '../components/Svgs/CommunityIconSVG'
 import ToggleIcon from '../components/Svgs/ToggleIconSVG'
 import InfoIcon from '../components/Svgs/InfoIconSVG'
 
-const navMenuData = [
+const menuItems = [
   {
     icon: HomeIcon,
     value: 'Top',
@@ -37,4 +37,4 @@ const navMenuData = [
     value: 'Info',
   },
 ]
-export default navMenuData
+export default menuItems
