@@ -7,13 +7,9 @@ import styled from 'styled-components'
 import { media } from '../../utils/media'
 
 const Container = styled.div`
-  //display: none;
-  //align-items: center;
-
   @media ${media.MD} {
     border-top: none;
   }
-
   svg {
     margin-right: 8px;
   }
@@ -24,9 +20,9 @@ const Shortcut = styled.span`
   display: none;
 
   &:after {
+    display: inline-block;
     content: ':';
     text-decoration: none;
-    display: inline-block;
     white-space: pre;
   }
 

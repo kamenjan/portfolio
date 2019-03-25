@@ -30,11 +30,12 @@ const menuItems = [
     icon: ToggleIcon,
     value: 'Theme',
     toggleTheme: true,
-    floatRight: true,
+    actionDescription: 'toggleTheme',
   },
   {
     icon: InfoIcon,
     value: 'Info',
+    actionDescription: 'openModal',
   },
 ]
 export default menuItems

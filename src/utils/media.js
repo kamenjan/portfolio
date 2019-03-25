@@ -23,6 +23,10 @@ const sizes = {
   XL: 1681,
 }
 
+export const getViewportWidth = () => {
+  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+}
+
 export const mediaGordan = Object.keys(sizes).reduce((accumulator, label) => {
   const emSize = sizes[label] / 16
   accumulator[label] = (...args) => css`

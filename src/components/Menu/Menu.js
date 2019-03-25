@@ -1,11 +1,13 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
-import { media, size } from '../../utils/media'
+import { media, size, getViewportWidth } from '../../utils/media'
 
 import MenuItem from './MenuItem'
 import { HamburgerCollapse } from 'react-animated-burgers'
+import ThemeContext from '../../context/theme'
+import ModalContext from '../../context/modal'
 
 const Container = styled.div`
   position: initial;
@@ -56,28 +58,23 @@ const MobileMenu = styled.div`
   border-bottom: 1px solid #676767;
 
   &.menu-enter {
-    //transform: translateY(0);
     transform: translateY(calc(var(--item-height-mobile) * -6));
   }
 
   &.menu-enter-active {
-    //transform: translateY(calc(var(--item-height-mobile) * 6));
     transform: translateY(0);
     transition: all var(--animation-duration);
   }
 
   &.menu-enter-done {
-    //transform: translateY(calc(var(--item-height-mobile) * 6));
     transform: translateY(0);
   }
 
   &.menu-exit {
-    //transform: translateY(calc(var(--item-height-mobile) * 6));
     transform: translateY(0);
   }
 
   &.menu-exit-active {
-    //transform: translateY(0);
     transform: translateY(calc(var(--item-height-mobile) * -6));
     transition: all var(--animation-duration);
   }
@@ -95,7 +92,6 @@ const MobileMenu = styled.div`
       cursor: pointer;
     }
   }
-
 `
 const DesktopMenu = styled.div`
   --menu-height-desktop: 38px;
@@ -128,6 +124,7 @@ const MenuBurger = styled(HamburgerCollapse)`
   z-index: 100;
   top: 8px;
   right: 8px;
+  outline: none;
 `
 
 const Menu = ({ menuItems }) => {
@@ -143,10 +140,32 @@ const Menu = ({ menuItems }) => {
     setMobile(width < size.MD)
   }
 
+  const [keyPressed, setKeyPressed] = useState(null)
+  const keyPress = e => {
+    setKeyPressed(e.key)
+    setKeyPressed(null)
+  }
+
   const animationTimeout = 400
 
+  const { theme, setTheme } = useContext(ThemeContext)
+  const { modalOpened, setOpened } = useContext(ModalContext)
+
   const menuItemsContainer = menuItems.map(
-    ({ value, icon, scrollTo, toggleTheme }, i) => {
+    ({ value, icon, scrollTo, actionDescription }, i) => {
+      const actionCreator = actionDescription => () => {
+        switch (actionDescription) {
+          case 'toggleTheme':
+            setTheme(theme === 'dark' ? 'light' : 'dark')
+            break
+          case 'openModal':
+            setOpened(!modalOpened)
+            break
+          default:
+            return null
+        }
+      }
+
       return (
         <MenuItem
           key={i}
@@ -154,27 +173,30 @@ const Menu = ({ menuItems }) => {
           icon={icon}
           shortcut={i + 1}
           scrollTo={scrollTo}
+          action={actionCreator(actionDescription)}
+          keyPressed={keyPressed}
         />
       )
     },
   )
 
   useEffect(() => {
-    const viewportWidth = Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0,
-    )
-    setMobile(viewportWidth < size.MD)
+    setMobile(getViewportWidth() < size.MD)
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
   useEffect(() => {
+    !mobile && document.addEventListener('keypress', keyPress)
+    setKeyPressed(null)
+    return () => document.removeEventListener('keypress', keyPress)
+  }, [mobile])
+
+  useEffect(() => {
     menuOpened && // if menu was opened add listeners for close menu events
       closeMenuEvents.map(e => document.addEventListener(e, closeMenu))
-    return () => {
+    return () =>
       closeMenuEvents.map(e => document.removeEventListener(e, closeMenu))
-    }
   }, [menuOpened])
 
   return (

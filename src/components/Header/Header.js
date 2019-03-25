@@ -132,9 +132,6 @@ const Content = styled.div`
     margin-top: 38px;
     margin-left: 160px;
     font-size: 26px;
-    section {
-      font-size: 26px;
-    }
   }
   @media ${media.XL} {
     margin-top: 38px;
