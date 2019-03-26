@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     box-sizing: border-box;
     body {
+    
+      // If modal window is opened hijack site scroll
+      height: ${props => (props.modalOpened ? '100%' : 'inital')};
+      overflow: ${props => (props.modalOpened ? 'hidden' : 'visible')};
+    
       background-color: var(--color-bg-primary, #2b2b2b);
       font-family: 'Lucida Console', Monaco, monospace;
       a {

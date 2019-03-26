@@ -119,7 +119,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <GlobalStyle theme={theme} />
+      <GlobalStyle theme={theme} modalOpened={modalOpened} />
       <Header name={'topScrollAnchor'} headerData={headerData} />
       <SiteSection>
         <About aboutData={aboutData} />
@@ -150,8 +150,8 @@ const Portfolio = () => {
       <ParallaxDivider>
         <City />
       </ParallaxDivider>
-      {modalOpened && <Modal />}
       <Menu menuItems={menuItems} />
+      {modalOpened && <Modal />}
     </>
   )
 }

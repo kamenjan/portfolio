@@ -29,6 +29,7 @@ const Container = styled.div`
 
   @media ${media.MD} {
     position: fixed;
+    z-index: 20;
     left: 0;
     bottom: 0;
 
@@ -47,6 +48,8 @@ const MobileMenu = styled.div`
   position: fixed;
   right: 0;
   top: 0;
+  
+  z-index: 20;
 
   width: 280px;
   height: var(--menu-height-mobile);
