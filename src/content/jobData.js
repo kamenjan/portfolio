@@ -9,10 +9,7 @@ const jobData = [
         lineBreakAfter: true,
         content: (
           <span>
-            <a href={'https://www.termitnjak.com/en'} target={'_blank'}>
-              Termitnjak
-            </a>{' '}
-            2015-2016
+            <a href={'https://www.termitnjak.com/en'}>Termitnjak</a> 2015-2016
           </span>
         ),
       },
@@ -54,18 +51,10 @@ const jobData = [
         type: 'array',
         lineBreakAfter: true,
         content: [
-          <a href={'https://www.archicubator.com/en'} target={'_blank'}>
-            Archicubator
-          </a>,
-          <a href={'https://waammat.com/'} target={'_blank'}>
-            WAAMMat
-          </a>,
-          <a href={'https://mladipodjetnik.si'} target={'_blank'}>
-            MladiPodjetnik
-          </a>,
-          <a href={'http://www.oceanorchids.si/'} target={'_blank'}>
-            OceanOrchids
-          </a>,
+          <a href={'https://www.archicubator.com/en'}>Archicubator</a>,
+          <a href={'https://waammat.com/'}>WAAMMat</a>,
+          <a href={'https://mladipodjetnik.si'}>MladiPodjetnik</a>,
+          <a href={'http://www.oceanorchids.si/'}>OceanOrchids</a>,
         ],
       },
       {
@@ -98,10 +87,7 @@ const jobData = [
         lineBreakAfter: true,
         content: (
           <span>
-            <a href={'http://www.consoriana.com/'} target={'_blank'}>
-              Consoriana
-            </a>{' '}
-            2016-2018
+            <a href={'http://www.consoriana.com/'}>Consoriana</a> 2016-2018
           </span>
         ),
       },
@@ -146,15 +132,9 @@ const jobData = [
         type: 'array',
         lineBreakAfter: true,
         content: [
-          <a href={'http://deepbluesw.com/'} target={'_blank'}>
-            DeepBlue
-          </a>,
-          <a href={'http://paktmedia.com/'} target={'_blank'}>
-            PaktMedia
-          </a>,
-          <a href={'http://adriapharm.com/'} target={'_blank'}>
-            AdriaPharm
-          </a>,
+          <a href={'http://deepbluesw.com/'}>DeepBlue</a>,
+          <a href={'http://paktmedia.com/'}>PaktMedia</a>,
+          <a href={'http://adriapharm.com/'}>AdriaPharm</a>,
         ],
       },
       {

@@ -13,7 +13,6 @@ const communityData = [
               href={
                 'http://www.termitnjak.com/en/blog/dragon-sprint-2016-a-full-week-of-sprinting-on-pyramid'
               }
-              target={'_blank'}
             >
               Dragon Sprint
             </a>{' '}
@@ -47,10 +46,7 @@ const communityData = [
         lineBreakAfter: true,
         content: (
           <span>
-            <a
-              href='https://www.meetup.com/React-Development-Meetup-Slovenija/events/256143735/'
-              target={'_blank'}
-            >
+            <a href='https://www.meetup.com/React-Development-Meetup-Slovenija/events/256143735/'>
               React Meetup
             </a>{' '}
             2018
