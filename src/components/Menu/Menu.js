@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { media, size, getViewportWidth } from '../../utils/media'
 
 import MenuItem from './MenuItem'
@@ -128,9 +128,19 @@ const MenuBurger = styled(HamburgerCollapse)`
   top: 8px;
   right: 8px;
   outline: none;
+  span,
+  span:after,
+  span:before {
+    background-color: var(--color-contrast);
+  }
 `
 
 const Menu = ({ menuItems }) => {
+  const { theme, setTheme } = useContext(ThemeContext)
+  const { modalOpened, setOpened } = useContext(ModalContext)
+
+  const animationTimeout = 400
+
   // Set menu state and state handlers
   const [menuOpened, setMenuOpened] = useState(false)
   const closeMenu = () => menuOpened && setMenuOpened(false)
@@ -149,26 +159,22 @@ const Menu = ({ menuItems }) => {
     setKeyPressed(null)
   }
 
-  const animationTimeout = 400
-
-  const { theme, setTheme } = useContext(ThemeContext)
-  const { modalOpened, setOpened } = useContext(ModalContext)
+  const actionCreator = actionDescription => () => {
+    switch (actionDescription) {
+      case 'toggleTheme':
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+        break
+      case 'openModal':
+        setOpened(!modalOpened)
+        break
+      default:
+        modalOpened && setOpened(false)
+    }
+  }
 
   const menuItemsContainer = menuItems.map(
     ({ value, icon, scrollTo, actionDescription }, i) => {
-      const actionCreator = actionDescription => () => {
-        switch (actionDescription) {
-          case 'toggleTheme':
-            setTheme(theme === 'dark' ? 'light' : 'dark')
-            break
-          case 'openModal':
-            setOpened(!modalOpened)
-            break
-          default:
-            return null
-        }
-      }
-
+      const action = actionCreator(actionDescription)
       return (
         <MenuItem
           key={i}
@@ -176,7 +182,7 @@ const Menu = ({ menuItems }) => {
           icon={icon}
           shortcut={i + 1}
           scrollTo={scrollTo}
-          action={actionCreator(actionDescription)}
+          action={action}
           keyPressed={keyPressed}
         />
       )
@@ -196,6 +202,7 @@ const Menu = ({ menuItems }) => {
   }, [mobile])
 
   useEffect(() => {
+    modalOpened && setOpened(false)
     menuOpened && // if menu was opened add listeners for close menu events
       closeMenuEvents.map(e => document.addEventListener(e, closeMenu))
     return () =>

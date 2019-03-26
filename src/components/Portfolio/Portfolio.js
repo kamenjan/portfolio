@@ -151,7 +151,7 @@ const Portfolio = () => {
         <City />
       </ParallaxDivider>
       <Menu menuItems={menuItems} />
-      {modalOpened && <Modal />}
+      <Modal opened={modalOpened} />
     </>
   )
 }

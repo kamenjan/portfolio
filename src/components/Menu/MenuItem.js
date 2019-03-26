@@ -33,15 +33,7 @@ const Shortcut = styled.span`
 
 const DisplayValue = styled.span``
 
-const MenuItem = ({
-  icon,
-  onClick,
-  scrollTo,
-  shortcut,
-  value,
-  keyPressed,
-  action,
-}) => {
+const MenuItem = ({ icon, scrollTo, shortcut, value, keyPressed, action }) => {
   const Icon = icon ? icon : null
 
   useEffect(() => {
@@ -52,15 +44,15 @@ const MenuItem = ({
   }, [keyPressed])
 
   return (
-    <Container onClick={action}>
+    <Container>
       {scrollTo ? (
-        <Link to={scrollTo} smooth={true} duration={1200}>
+        <Link onClick={action} to={scrollTo} smooth={true} duration={1200}>
           <Icon />
           <Shortcut>{shortcut}</Shortcut>
           <DisplayValue>{value}</DisplayValue>
         </Link>
       ) : (
-        <a>
+        <a onClick={action}>
           <Icon />
           <Shortcut>{shortcut}</Shortcut>
           <DisplayValue>{value}</DisplayValue>
