@@ -6,7 +6,7 @@ Project was bootstrapped with [Create React App](https://github.com/facebook/cre
 
 I've also added custom deploy script using [gh-pages](https://www.npmjs.com/package/gh-pages) package. It gets deploy destination from "homepage" package.json tag. To compile and run production build change "hompage" to "/".
 
-Tags: React, hooks, memoize, styled-components,
+Tags: React, hooks, memoize, styled-components66655
 
 ## Available Scripts
 
