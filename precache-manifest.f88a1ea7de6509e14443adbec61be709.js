@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "662321ad6570f8b8ec42",
-    "url": "/portfolio/static/js/main.af5c099b.chunk.js"
+    "revision": "1ecc67984db3ad14d748",
+    "url": "/portfolio/static/js/main.e0eab733.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/bg-city-xl-dark.d5a3fdc7.jpg"
   },
   {
-    "revision": "9d2fbdd783325c30a4f13bbd8cbc7a93",
+    "revision": "fbfc0955942b1968f890e094248c18d3",
     "url": "/portfolio/index.html"
   }
 ];
