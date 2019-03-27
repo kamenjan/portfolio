@@ -24,12 +24,14 @@ const GlobalStyle = createGlobalStyle`
         props.theme === 'light' ? '#287bde' : '#287bde'};                
     }
     height: 100%;
+    overflow-y: scroll;
     box-sizing: border-box;
     body {
     
       // If modal window is opened hijack site scroll
-      height: ${props => (props.modalOpened ? '100%' : 'inital')};
+      height: ${props => (props.modalOpened ? '101vh' : 'inital')};
       overflow: ${props => (props.modalOpened ? 'hidden' : 'visible')};
+      
     
       background-color: var(--color-bg-primary, #2b2b2b);
       font-family: 'Lucida Console', Monaco, monospace;
