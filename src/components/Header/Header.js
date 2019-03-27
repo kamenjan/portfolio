@@ -145,6 +145,17 @@ const Content = styled.div`
   }
 `
 
+const Mask = styled.div`
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${props =>
+    props.theme === 'light' ? 'rgba(43, 26, 47, 0.3)' : 'none'};
+`
+
 const Header = ({ headerData, name }) => {
   // Theme context
   const { theme } = useContext(ThemeContext)
@@ -165,6 +176,7 @@ const Header = ({ headerData, name }) => {
       <ReactBasicScroll config={config}>
         <div>
           <img alt={''} />
+          <Mask theme={theme} />
           <Content>
             <JSDoc docSections={headerData.docSections} />
           </Content>

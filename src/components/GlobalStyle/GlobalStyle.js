@@ -9,7 +9,9 @@ const GlobalStyle = createGlobalStyle`
       --color-bg-primary: ${({ theme }) =>
         theme === 'light' ? '#2b1a2f' : '#2b2b2b'};
       --color-bg-menu: ${props =>
-        props.theme === 'light' ? '#fbfbfb' : '#3d3d3d'};      
+        props.theme === 'light' ? '#3f2543' : '#3d3d3d'};
+      --color-border: ${props =>
+        props.theme === 'light' ? '#676767' : '#676767'};             
       --color-contrast: ${props =>
         props.theme === 'light' ? '#cdcdcd' : '#a9b7c6'};      
       --color-primary: ${props =>

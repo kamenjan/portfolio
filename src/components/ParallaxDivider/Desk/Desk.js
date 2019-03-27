@@ -27,7 +27,6 @@ const Container = styled.img`
   top: -120px;
 
   content: ${`url(${bgImages.XS})`};
-  filter: ${({ theme }) => `brightness(${theme === 'light' ? '350' : '100'}%)`};
 
   will-change: transform;
   transform: translateY(var(--ty-img-desk));
@@ -58,6 +57,17 @@ const Container = styled.img`
   }
 `
 
+const Mask = styled.div`
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${props =>
+    props.theme === 'light' ? 'rgba(43, 26, 47, 0.3)' : 'none'};
+`
+
 const Desk = () => {
   const { theme } = useContext(ThemeContext)
   // BasicScroll config
@@ -73,9 +83,12 @@ const Desk = () => {
   }
 
   return (
-    <ReactBasicScroll config={config}>
-      <Container theme={theme} />
-    </ReactBasicScroll>
+    <>
+      <ReactBasicScroll config={config}>
+        <Container theme={theme} />
+      </ReactBasicScroll>
+      <Mask theme={theme} />
+    </>
   )
 }
 

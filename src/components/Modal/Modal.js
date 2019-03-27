@@ -68,6 +68,7 @@ const Content = styled.div`
   width: calc(100% - 20px);
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid var(--color-border);
 
   p {
     font-size: 11px;

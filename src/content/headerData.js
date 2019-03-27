@@ -26,9 +26,8 @@ const headerData = {
       docTag: 'link',
       type: 'array',
       content: [
-        <a href={'mail'}>mail</a>,
         <a href={'https://github.com/kamenjan'}>github</a>,
-        <a href={'https://www.linkedin.com/in/gcbl70xrzi/'}>linkedin</a>,
+        <a href={'https://www.linkedin.com/in/rokarih'}>linkedin</a>,
       ],
     },
   ],

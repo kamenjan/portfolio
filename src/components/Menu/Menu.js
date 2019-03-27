@@ -10,7 +10,8 @@ import ThemeContext from '../../context/theme'
 import ModalContext from '../../context/modal'
 
 const Container = styled.div`
-  position: initial;
+  position: fixed;
+  z-index: 20;
   background-color: var(--color-bg-menu);
   color: var(--color-contrast);
   a {
@@ -28,13 +29,10 @@ const Container = styled.div`
   }
 
   @media ${media.MD} {
-    position: fixed;
-    z-index: 20;
     left: 0;
     bottom: 0;
-
     width: 100%;
-    height: 40px;
+    border-top: 1px solid var(--color-border);
   }
 `
 const MobileMenu = styled.div`
@@ -57,8 +55,8 @@ const MobileMenu = styled.div`
   background-color: var(--color-bg-menu);
   color: var(--color-contrast);
 
-  border-left: 1px solid #676767;
-  border-bottom: 1px solid #676767;
+  border-left: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 
   &.menu-enter {
     transform: translateY(calc(var(--item-height-mobile) * -6));
@@ -107,6 +105,10 @@ const DesktopMenu = styled.div`
 
   div:nth-child(5) {
     margin-left: auto;
+  }
+
+  svg {
+    height: 22px;
   }
 
   a {
