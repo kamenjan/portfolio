@@ -204,7 +204,8 @@ const Menu = ({ menuItems }) => {
   }, [mobile])
 
   useEffect(() => {
-    modalOpened && setOpened(false)
+    // NOTE: Should modal close if mobile menu is opened?
+    // modalOpened && setOpened(false)
     menuOpened && // if menu was opened add listeners for close menu events
       closeMenuEvents.map(e => document.addEventListener(e, closeMenu))
     return () =>
