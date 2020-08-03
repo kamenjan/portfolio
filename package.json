@@ -8,19 +8,19 @@
     "url": "https://github.com/kamenjan/portfolio"
   },
   "dependencies": {
-    "basicscroll": "3.0.1",
-    "lodash": "4.17.11",
+    "basicscroll": "3.0.3",
+    "lodash": "^4.17.19",
     "normalize.css": "8.0.1",
     "prop-types": "15.7.2",
-    "react": "16.8.0-alpha.1",
-    "react-animated-burgers": "1.2.6",
-    "react-basic-scroll": "1.0.0",
-    "react-dom": "16.8.0-alpha.1",
-    "react-scripts": "2.1.8",
-    "react-scroll": "1.7.11",
-    "react-transition-group": "2.6.1",
-    "redux": "4.0.1",
-    "styled-components": "4.1.3",
+    "react": "16.13.1",
+    "react-animated-burgers": "1.2.8",
+    "react-basic-scroll": "1.1.1",
+    "react-dom": "16.13.1",
+    "react-scripts": "3.4.1",
+    "react-scroll": "1.8.0",
+    "react-transition-group": "4.4.1",
+    "redux": "4.0.5",
+    "styled-components": "5.1.1",
     "svg.js": "2.7.1"
   },
   "scripts": {
@@ -41,8 +41,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-macros": "2.4.5",
-    "babel-plugin-styled-components": "1.10.0",
-    "gh-pages": "2.0.1"
+    "babel-plugin-macros": "2.8.0",
+    "babel-plugin-styled-components": "1.11.1",
+    "gh-pages": "3.1.0"
   }
 }
