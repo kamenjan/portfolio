@@ -41,7 +41,7 @@ const MenuItem = ({ icon, scrollTo, shortcut, value, keyPressed, action }) => {
       scrollTo && scroller.scrollTo(scrollTo, { smooth: true, duration: 1200 })
       action()
     }
-  }, [keyPressed])
+  }, [action, keyPressed, scrollTo, shortcut])
 
   return (
     <Container>
@@ -52,11 +52,11 @@ const MenuItem = ({ icon, scrollTo, shortcut, value, keyPressed, action }) => {
           <DisplayValue>{value}</DisplayValue>
         </Link>
       ) : (
-        <a onClick={action}>
+        <Link onClick={action}>
           <Icon />
           <Shortcut>{shortcut}</Shortcut>
           <DisplayValue>{value}</DisplayValue>
-        </a>
+        </Link>
       )}
     </Container>
   )

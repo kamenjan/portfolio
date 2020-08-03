@@ -19,7 +19,7 @@ const Container = styled.div`
     font-size: 18px;
     color: var(--color-primary, '#a9b7c6');
     &:before {
-      content: '//\00a0';
+      content: '// ';
     }
   }
   h3 {
@@ -34,10 +34,10 @@ const Container = styled.div`
     font-size: 13px;
     line-height: 1.7em;
     &:before {
-      content: '[\00a0';
+      content: '[ ';
     }
     &:after {
-      content: '\00a0]';
+      content: ' ]';
     }
   }
 

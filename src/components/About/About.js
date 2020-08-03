@@ -27,7 +27,7 @@ const Container = styled.div`
       font-size: 20px;
     }
     @media ${media.XL} {
-      font-size: 22px;
+      font-size: 22px;      
     }
   }
   p:first-child {

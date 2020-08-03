@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 
 import styled from 'styled-components'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -7,7 +7,6 @@ import { media, size } from '../../utils/media'
 import ModalContext from '../../context/modal'
 
 const Container = styled.div`
-  --animation-duration: ${props => props.timeout || '1000ms'}
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +30,7 @@ const Container = styled.div`
     & > div {
       opacity: 1;
       transform: scale(1);
-      transition: all var(--animation-duration);
+      transition: all var(1000ms);
     }    
   }
 
@@ -53,7 +52,7 @@ const Container = styled.div`
     & > div {
       opacity: 0.01;
       transform: scale(1.1);
-      transition: all var(--animation-duration);
+      transition: all var(1000ms);
     }
   }
   
@@ -95,17 +94,19 @@ const Content = styled.div`
 
 const Modal = ({ opened }) => {
   const { setOpened } = useContext(ModalContext)
-  const closeModal = () => setOpened(false)
+  
   const modalBgRef = useRef()
   const animationTimeout = 400
 
   useEffect(() => {
+    // console.log(opened)
+    const closeModal = () => setOpened(false)
     const modalBackground = modalBgRef.current
     modalBackground && modalBackground.addEventListener('click', closeModal)
     return () =>
       modalBackground &&
       modalBackground.removeEventListener('click', closeModal)
-  }, [opened])
+  }, [opened, setOpened])
 
   return (
     <TransitionGroup component={null}>

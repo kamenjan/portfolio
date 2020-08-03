@@ -10,7 +10,7 @@ const stackData = [
         subsections: [
           {
             title: 'specifications_&_compiler',
-            itemList: ['ES2018+', 'Babel'],
+            itemList: ['ES2018+', 'Babel', 'TypeScript'],
           },
           {
             title: 'build_&_dev_tools',
@@ -54,7 +54,7 @@ const stackData = [
         subsections: [
           {
             title: 'apps',
-            itemList: ['Sketch', 'Adobe Photoshop'],
+            itemList: ['Sketch', 'Adobe Photoshop', 'Figma'],
           },
         ],
       },

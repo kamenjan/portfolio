@@ -38,7 +38,7 @@ const Container = styled.div`
 const MobileMenu = styled.div`
   --item-height-mobile: 72px;
   --menu-height-mobile: calc(var(--item-height-mobile) * 6);
-  --animation-duration: ${props => props.timeout || '1000ms'}
+  --animation-duration: 400ms;
 
   display: flex;
   flex-flow: column;
@@ -145,8 +145,9 @@ const Menu = ({ menuItems }) => {
 
   // Set menu state and state handlers
   const [menuOpened, setMenuOpened] = useState(false)
-  const closeMenu = () => menuOpened && setMenuOpened(false)
-  const closeMenuEvents = ['focusout', 'scroll']
+  // const closeMenu = () => menuOpened && setMenuOpened(false)
+  // const closeMenuEvents = ['focusout', 'scroll']
+  const closeMenuEvents = ['scroll']
 
   const [mobile, setMobile] = useState(false)
   const onResize = event => {
@@ -204,13 +205,15 @@ const Menu = ({ menuItems }) => {
   }, [mobile])
 
   useEffect(() => {
+    // console.log(menuOpened)
+    const closeMenu = () => menuOpened && setMenuOpened(false)
     // NOTE: Should modal close if mobile menu is opened?
     // modalOpened && setOpened(false)
     menuOpened && // if menu was opened add listeners for close menu events
       closeMenuEvents.map(e => document.addEventListener(e, closeMenu))
     return () =>
       closeMenuEvents.map(e => document.removeEventListener(e, closeMenu))
-  }, [menuOpened])
+  }, [closeMenuEvents, menuOpened])
 
   return (
     <Container>
@@ -223,7 +226,10 @@ const Menu = ({ menuItems }) => {
           <TransitionGroup component={null}>
             {menuOpened && (
               <CSSTransition classNames='menu' timeout={animationTimeout}>
-                <MobileMenu timeout={`${animationTimeout}ms`}>
+                <MobileMenu 
+                  // onBlur={setMenuOpened(false)} 
+                  timeout={`${animationTimeout}ms`}
+                >
                   {menuItemsContainer}
                 </MobileMenu>
               </CSSTransition>

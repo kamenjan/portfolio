@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import * as svgjs from 'svg.js'

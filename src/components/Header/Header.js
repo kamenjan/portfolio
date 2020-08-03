@@ -120,12 +120,12 @@ const Content = styled.div`
 
   @media ${media.SM} {
     margin-top: 22px;
-    margin-left: 98px;
+    margin-left: 200px;
     font-size: 16px;
   }
   @media ${media.MD} {
     margin-top: 22px;
-    margin-left: 120px;
+    margin-left: 180px;
     font-size: 20px;
   }
   @media ${media.LG} {
