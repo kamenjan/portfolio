@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "basicscroll": "3.0.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "normalize.css": "8.0.1",
     "prop-types": "15.7.2",
     "react": "16.13.1",
